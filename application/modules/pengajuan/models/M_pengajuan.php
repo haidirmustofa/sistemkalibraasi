@@ -177,11 +177,10 @@ class M_pengajuan extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
-    public function getPembatalan($id)
+    public function getPembatalan()
     {
         $this->db->select('*')
-            ->from('tbl_pembatalan')
-            ->where('id_pengajuan', $id);
+            ->from('tbl_pembatalan');
         $query = $this->db->get()->result_array();
         return $query;
     }

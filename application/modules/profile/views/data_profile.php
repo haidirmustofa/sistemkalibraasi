@@ -17,86 +17,46 @@
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
     <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-
-        <!-- ============================================================== -->
-        <!-- basic table -->
         <?= $this->session->flashdata('message'); ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <button type="button" class="btn btn-info mb-5" data-toggle="modal" data-target="#bs-example-modal-lg">Tambah Divisi</button>
-                        <h4 class="card-title">Data Divisi Sistem Kalibrasi</h4>
-                        <div class="table-responsive">
-                            <table id="default_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%;"></th>
-                                        <th><small><b>Nama Divisi</small></b></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($divisi as $data) {
-                                    ?>
-                                        <tr>
-                                            <td>
-                                                <div class="btn-group dropright">
-                                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <!-- Dropdown menu links -->
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal<?php echo $data['id_divisi']; ?>">Edit</a>
-                                                        <a class=" dropdown-item" href="#" onClick="confirm_modal('delete-divisi/<?php echo  $data['id_divisi']; ?>');">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><small><?= $data['nama_divisi'] ?></small></td>
-                                            <div class="modal fade" id="modal<?= $data['id_divisi'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myLargeModalLabel">Edit Data</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form method="post" action="<?= base_url('edit-divisi') ?>">
-                                                                <div class="form-group">
-                                                                    <small id="name1" class="badge badge-default badge-info form-text text-white float-left">Nama Lengkap</small>
-                                                                    <input type="text" name="name" value="<?= $data['nama_divisi'] ?>" class="form-control" id="nametext" aria-describedby="name" required>
-                                                                    <input type="text" name="id" value="<?= $data['id_divisi'] ?>" class="form-control" id="nametext" aria-describedby="name" hidden>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                                                    <input type="submit" class="btn btn-primary" value="Simpan Data">
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        <?php } ?>
-                            </table>
-                        </div>
+                        <form method="post" action="<?= base_url('edit-profile') ?>">
+                            <div class="form-group">
+                                <input type="text" name="id" value="<?= $this->fungsi->user_login()->id_user ?> " hidden>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-info form-text text-white float-left">Nama Lengkap</small>
+                                    <input type="text" class="form-control" id="nametext2" name="fullname" aria-describedby="name" value="<?= $this->fungsi->user_login()->user_fullname ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-info form-text text-white float-left">Divisi - ( divisi hanya bisa diubah oleh admin )</small>
+                                    <input type="text" class="form-control" id="nametext2" name="divisi" aria-describedby="name" value="<?= $this->fungsi->user_login()->nama_divisi ?>" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-info form-text text-white float-left">Email</small>
+                                    <input type="email" class="form-control" id="nametext2" name="email" aria-describedby="name" value="<?= $this->fungsi->user_login()->user_email ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-info form-text text-white float-left">No Hp</small>
+                                    <input type="number" class="form-control" id="nametext2" name="phone" aria-describedby="name" value="<?= $this->fungsi->user_login()->user_phone ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-danger form-text text-white float-left">Username</small>
+                                    <input type="text" class="form-control" id="nametext2" name="username" aria-describedby="name" value="<?= $this->fungsi->user_login()->user_name ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <small id="name1" class="badge badge-default badge-danger form-text text-white float-left">Password ( kosongkan jika tidak diubah )</small>
+                                    <input type="password" class="form-control" id="nametext2" name="password" aria-describedby="name">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-danger" value="Simpan">
+                                </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php
-include('modal_add_divisi.php');
-?>
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<!-- ============================================================== -->

@@ -13,34 +13,26 @@ class Profile extends MY_Controller
     public function index()
     {
         // $params['profile'] = $this->M_profile->getProfile();
-        $params['navbar'] = "Datra Profil";
+        $params['navbar'] = "Data Profil";
         $params['title'] = 'Data Profil Sistem Kalibrasi';
         $params['title'] = 'Data Profil Sistem Kalibrasi';
         $this->template->load('template/template', 'data_profile', $params);
     }
-    public function add_divisi()
+
+    public function edit_profile()
     {
-        $params['id_divisi'] = $this->input->post('id');
-        $params['nama_divisi'] = $this->input->post('name');
-        $this->M_divisi->inputdivisi($params);
-        $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
-        return redirect($_SERVER['HTTP_REFERER']);
-    }
-    public function edit_divisi()
-    {
-        $params['id_divisi'] = $this->input->post('id');
-        $params['nama_divisi'] = $this->input->post('name');
-        $this->M_divisi->updatedivisi($params);
+        $password = $this->input->post('password');
+        $params['id_user'] = $this->fungsi->user_login()->id_user;
+        $params['user_fullname'] = $this->input->post('fullname');
+        $params['user_name'] = $this->input->post('username');
+        $params['user_email'] = $this->input->post('email');
+        $params['user_phone'] = $this->input->post('phone');
+        if (!empty($password)) {
+            $params['user_password'] = sha1($this->input->post('password'));
+        }
+        $this->M_profile->update($params);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Merubah Data!</div>');
-        return redirect($_SERVER['HTTP_REFERER']);
-    }
-    public function delete_divisi($params)
-    {
-        $this->M_divisi->deletedivisi($params);
-        $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Sukses - </strong> Berhasil Menghapus Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);
     }
 }

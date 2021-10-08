@@ -15,6 +15,7 @@ class Pengajuan extends MY_Controller
         $params['alat'] = $this->M_pengajuan->getAlatByPengajuan();
         $params['lab'] = $this->M_pengajuan->getLabByPengajuan();
         $params['dokumen'] = $this->M_pengajuan->getDokumenByPengajuan();
+        $params['pembatalan'] = $this->M_pengajuan->getPembatalan();
         if ($this->fungsi->user_login()->user_status == 'Member') {
             $params['pengajuan'] = $this->M_pengajuan->getPengajuanByDivisi();
         } else {

@@ -108,7 +108,7 @@
                                     if ($dataAlat['id_pengajuan'] == $data['id_pengajuan']) {
                                 ?>
                                         <li>
-                                            <i class="fas fa-circle text-primary font-10 mr-2"></i>
+                                            <i class="fas fa-circle text-success font-10 mr-2"></i>
                                             <span class="text-muted"><?= $dataAlat['nama_alat'] ?></span>
                                         </li>
                                 <?php }

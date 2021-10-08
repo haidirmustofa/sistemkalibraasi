@@ -97,6 +97,9 @@ $route['add-status'] = 'status/add_status';
 $route['delete-status/(:any)'] = 'status/delete_status/$1';
 $route['edit-status'] = 'status/edit_status';
 
+//profile
+$route['edit-profile'] = 'profile/edit_profile';
+
 //divisi
 // $route['data-divisi'] = 'divisi/index';
 // $route['add-divisi'] = 'divisi/add_divisi';

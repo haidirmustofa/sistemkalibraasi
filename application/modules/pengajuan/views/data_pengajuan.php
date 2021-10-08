@@ -63,7 +63,17 @@
                                             <td><small><?= $data['nama_pengaju'] ?></small></td>
                                             <td><small><?= $data['nama_divisi'] ?></small></td>
                                             <td><small><?= $data['tanggal_pengajuan'] ?></small></td>
-                                            <td><small><?= $data['nama_status'] ?></small></td>
+                                            <td><small>
+                                                    <?= $data['nama_status'] ?>
+                                                    <?php
+                                                    foreach ($pembatalan as $dataPembatalan) {
+                                                        if ($dataPembatalan['id_pengajuan'] == $data['id_pengajuan']) {
+                                                    ?>
+                                                            <br> " <?= $dataPembatalan['keterangan_pembatalan'] ?> "
+                                                    <?php }
+                                                    } ?>
+                                                </small>
+                                            </td>
                                             <?php
                                             if ($data['nama_lab'] != null) {
                                             ?>
