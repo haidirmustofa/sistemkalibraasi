@@ -107,7 +107,7 @@ class Pengajuan extends MY_Controller
         $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
-        return redirect($_SERVER['HTTP_REFERER']);
+        return redirect(base_url('data-pengajuan'));
     }
     public function pengajuan_lab()
     {

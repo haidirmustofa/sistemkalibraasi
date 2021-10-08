@@ -26,71 +26,79 @@
                 <div class="col-12 mb-5 ">
                     <a class="btn btn-primary btn-sm " href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
                     <a class="btn btn-danger btn-sm " href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
-                    <a class="btn btn-success btn-sm float-right" href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
+                    <a class="btn btn-success btn-sm " href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
                 </div>
             <?php  }
             ?>
-            <div class=" card-group">
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_pengaju'] ?></span>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_pengaju'] ?></span>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Nama Pengaju</h6>
                                 </div>
-                                <hr>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Nama Pengaju</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_divisi'] ?></span>
+                <div class="col-md-3">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_divisi'] ?></span>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Divisi</h6>
                                 </div>
-                                <hr>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Divisi</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="home"></i></span>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="home"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['tanggal_pengajuan'] ?></span>
+                <div class="col-md-3">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['tanggal_pengajuan'] ?></span>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Tanggal Pengajuan</h6>
                                 </div>
-                                <hr>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Tanggal Pengajuan</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="calendar"></i></span>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="calendar"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card border-right">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
+                <div class="col-md-3">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Status Pengajuan</h6>
                                 </div>
-                                <hr>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Status Pengajuan</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="info"></i></span>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="info"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +139,7 @@
                                         <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-add-lab<?= $data['id_pengajuan'] ?>"><i class="fas fa-plus"></i> Lab</a>
                                     <?php  } else  if ($data['nama_lab'] == null) {
                                     ?>
-                                        <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>"><i class="fas fa-upload"></i>Pilih Lab</a>
+                                        <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>"><i class="fab fa-get-pocket"></i> Pilih Lab</a>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -185,25 +193,24 @@
                                 </div>
                             </div>
                             <hr>
-                            <?php
-                            foreach ($dokumen as $dataDokumen) {
-                                if ($dataDokumen['id_pengajuan'] == $data['id_pengajuan']) {
-                            ?>
-                                    <div class="ml-3 mt-2">
-                                        <div class="row">
+                            <div class="ml-3 mt-2">
+                                <div class="row">
+                                    <?php
+                                    foreach ($dokumen as $dataDokumen) {
+                                        if ($dataDokumen['id_pengajuan'] == $data['id_pengajuan']) {
+                                    ?>
                                             <div class="col-md-10">
                                                 <h6 class="text-dark font-weight-medium mb-2"> <?= $dataDokumen['nama_dokumen'] ?></h6>
                                             </div>
                                             <div class="col-md-2">
                                                 <a target="blank" href="<?= base_url() . 'assets/dokumen/' . $dataDokumen['file_dokumen']; ?>" type="button" class="btn btn-sm " data-bgcolor="#00b489" data-color="#ffffff"><i class="fa fa-download"></i></a>
                                             </div>
-                                        </div>
-                                        <hr>
-                                    </div>
-                            <?php
-                                }
-                            }
-                            ?>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -130,7 +130,7 @@
                                                     <br>
                                                     <?php
                                                     if ($newkalibrasi != null) {
-                                                        echo $diff->format("%R%a Hari");
+                                                        echo $diff->format("%a Hari Lagi");
                                                     }
                                                     ?>
                                                 </small></td>
