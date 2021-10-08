@@ -45,35 +45,7 @@
                                                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <form method="POST" action="<?= base_url('detail-pengajuan') ?>">
-                                                            <input type="text" name="id" value="<?= $data['id_pengajuan'] ?>" hidden>
-                                                            <input type="submit" class="dropdown-item btn" value="Detail Pengajuan">
-                                                            <!-- <a class="dropdown-item btn" type="submit">Detail Pengajuan</a> -->
-                                                        </form>
-                                                        <!-- <?php
-                                                                ?>
-                                                        <?php
-                                                        if ($data['nama_lab'] == null) {
-                                                            if ($this->fungsi->user_login()->user_status == 'Member') {
-                                                        ?>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>">Pilih Laboratorium</a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-add-lab<?= $data['id_pengajuan'] ?>">Ajukan Laboratorium</a>
-                                                        <?php
-                                                            }
-                                                        }
-                                                        ?>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-dokumen<?= $data['id_pengajuan'] ?>">Lihat Dokumen</a>
-                                                        <?php
-                                                        if ($this->fungsi->user_login()->user_status == 'Admin') {
-                                                        ?>
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-upload<?= $data['id_pengajuan'] ?>">Upload Dokumen</a>
-                                                        <?php
-                                                        }
-                                                        ?> -->
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
+                                                        <a class="dropdown-item" href="<?= base_url('detail-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>">Detail Pengajuan</a>
                                                     </div>
                                                 </div>
                                             </td>

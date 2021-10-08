@@ -32,14 +32,19 @@ class Pengajuan extends MY_Controller
         $params['title'] = 'Data pengajuan Sistem Kalibrasi';
         $this->template->load('template/template', 'add_pengajuan', $params);
     }
-    public function detail_pengajuan()
+    public function detail_pengajuan($slug)
     {
-        $id =  $this->input->post("id");
+        $slug_ = $this->M_pengajuan->getPengajuanBySlug($slug);
+        $id =  $slug_[0]['id_pengajuan'];
         $params['pengajuan'] = $this->M_pengajuan->getPengajuanByID($id);
         $params['labo'] = $this->M_pengajuan->getLab();
         $params['alat'] = $this->M_pengajuan->getAlatByPengajuan();
         $params['lab'] = $this->M_pengajuan->getLabByPengajuan();
+        $params['pengajuanlab'] = $this->M_pengajuan->getPengajuanLab($id);
         $params['dokumen'] = $this->M_pengajuan->getDokumenByPengajuan();
+        $params['status'] = $this->M_pengajuan->getStatusProses();
+        // var_dump($params['status']);
+        // die;
         $params['navbar'] = 'Data Pengajuan';
         $params['title'] = 'Detail pengajuan Sistem Kalibrasi';
         $this->template->load('template/template', 'detail_pengajuan', $params);
@@ -80,6 +85,7 @@ class Pengajuan extends MY_Controller
         $params['status_pengajuan'] = $status[0]['id_status'];
         $params['divisi_pengaju'] = $this->fungsi->user_login()->user_divition;
         $params['is_available'] = '0';
+        $params['pengajuan_slug'] = random_string('alnum', 50) . time();;
         $this->M_pengajuan->inputpengajuan($params);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
@@ -100,7 +106,7 @@ class Pengajuan extends MY_Controller
         $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
-        return redirect(base_url('data-pengajuan'));
+        return redirect($_SERVER['HTTP_REFERER']);
     }
     public function pengajuan_lab()
     {
@@ -112,7 +118,25 @@ class Pengajuan extends MY_Controller
         $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
-        return redirect(base_url('data-pengajuan'));
+        return redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function pengajuan_selesai()
+    {
+        $id = $this->input->post("id");
+        $status = $this->M_pengajuan->getStatusAkhir();
+        $data['status_pengajuan'] = $status[0]['id_status'];
+        $data['id_pengajuan'] =  $this->input->post("id");
+        $this->M_pengajuan->updatepengajuan($data);
+        $alat = $this->M_pengajuan->getAlatPengajuan($id);
+        $jumlah_dipilih = count($alat);
+        for ($x = 0; $x < $jumlah_dipilih; $x++) {
+            $params['id_alat'] = $alat[$x]['id_alat'];
+            $params['waktu_kalibrasi_alat'] = $this->input->post("date");
+            $this->M_pengajuan->update_alat($params);
+        }
+        $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
+        return redirect($_SERVER['HTTP_REFERER']);
     }
     public function cancel_pengajuan()
     {
@@ -132,12 +156,21 @@ class Pengajuan extends MY_Controller
             $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Sukses - </strong> Berhasil Membatalkan Pengajuan!</div>');
         }
-        return redirect(base_url('data-pengajuan'));
+        return redirect($_SERVER['HTTP_REFERER']);
     }
     public function edit_pengajuan()
     {
         $params['id_pengajuan'] = $this->input->post('id');
         $params['nama_pengajuan'] = $this->input->post('name');
+        $this->M_pengajuan->updatepengajuan($params);
+        $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sukses - </strong> Berhasil Merubah Data!</div>');
+        return redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function update_status()
+    {
+        $params['id_pengajuan'] = $this->input->post('id');
+        $params['status_pengajuan'] = $this->input->post('status');
         $this->M_pengajuan->updatepengajuan($params);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Merubah Data!</div>');

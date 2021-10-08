@@ -34,6 +34,12 @@ class M_pengajuan extends CI_Model
         $this->db->where('id_pengajuan', $data['id_pengajuan']);
         $this->db->update('tbl_pengajuan', $data);
     }
+    public function update_alat($data)
+    {
+
+        $this->db->where('id_alat', $data['id_alat']);
+        $this->db->update('tbl_alat', $data);
+    }
     public function getpengajuan()
     {
         $this->db->select('*')
@@ -59,11 +65,39 @@ class M_pengajuan extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getPengajuanBySlug($slug)
+    {
+        $this->db->select('*')
+            ->from('tbl_pengajuan')
+            ->where('pengajuan_slug', $slug)
+            ->join('user', 'user.id_user = tbl_pengajuan.id_user', 'left')
+            ->join('tbl_status', 'tbl_pengajuan.status_pengajuan = tbl_status.id_status', 'left')
+            ->join('tbl_lab', 'tbl_pengajuan.lab = tbl_lab.id_lab', 'left')
+            ->join('tbl_divisi', 'tbl_pengajuan.divisi_pengaju = tbl_divisi.id_divisi', 'left');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getStatusAwal()
     {
         $this->db->select('*')
             ->from('tbl_status')
             ->where('role_status', 'Awal');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getStatusAkhir()
+    {
+        $this->db->select('*')
+            ->from('tbl_status')
+            ->where('role_status', 'Akhir');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getStatusProses()
+    {
+        $this->db->select('*')
+            ->from('tbl_status')
+            ->where('role_status', null);
         $query = $this->db->get()->result_array();
         return $query;
     }
@@ -114,6 +148,23 @@ class M_pengajuan extends CI_Model
     {
         $this->db->select('*')
             ->join('tbl_alat', 'tbl_alat.id_alat = tbl_pengajuan_alat.id_alat', 'left')
+            ->from('tbl_pengajuan_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getPengajuanLab($id)
+    {
+        $this->db->select('*')
+            ->where('id_pengajuan', $id)
+            ->join('tbl_lab', 'tbl_lab.id_lab = tbl_pengajuan_lab.id_lab', 'left')
+            ->from('tbl_pengajuan_lab');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatPengajuan($id)
+    {
+        $this->db->select('*')
+            ->where('id_pengajuan', $id)
             ->from('tbl_pengajuan_alat');
         $query = $this->db->get()->result_array();
         return $query;

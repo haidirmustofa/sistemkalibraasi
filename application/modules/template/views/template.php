@@ -150,7 +150,7 @@
                 <span><i data-feather="bell" class="svg-icon"></i></span>
                 <span class="badge badge-primary notify-no rounded-circle">5</span>
               </a>
-              <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+              <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                 <ul class="list-style-none">
                   <li>
                     <div class="message-center notifications position-relative">
@@ -208,7 +208,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="<?= base_url() ?>assets/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
+                <img src="<?= base_url() ?>assets/assets/images/profil.png" alt="user" class="rounded-circle" width="40">
                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark"><?= $this->fungsi->user_login()->user_fullname ?></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">

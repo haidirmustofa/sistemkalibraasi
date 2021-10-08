@@ -20,13 +20,23 @@
         $no = 0;
         foreach ($pengajuan as $data) {
         ?>
-            <div class="card-group">
+            <?php
+            if ($this->fungsi->user_login()->user_status == 'Admin') {
+            ?>
+                <div class="col-12 mb-5 ">
+                    <a class="btn btn-primary btn-sm " href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
+                    <a class="btn btn-danger btn-sm " href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
+                    <a class="btn btn-success btn-sm float-right" href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
+                </div>
+            <?php  }
+            ?>
+            <div class=" card-group">
                 <div class="card border-right">
                     <div class="card-body">
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
                                 <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-primary font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_pengaju'] ?></span>
+                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_pengaju'] ?></span>
                                 </div>
                                 <hr>
                                 <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Nama Pengaju</h6>
@@ -42,7 +52,7 @@
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
                                 <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-success font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_divisi'] ?></span>
+                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill d-lg-block d-md-none"><?= $data['nama_divisi'] ?></span>
                                 </div>
                                 <hr>
                                 <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Divisi</h6>
@@ -58,7 +68,7 @@
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
                                 <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-warning font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['tanggal_pengajuan'] ?></span>
+                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['tanggal_pengajuan'] ?></span>
                                 </div>
                                 <hr>
                                 <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Tanggal Pengajuan</h6>
@@ -74,7 +84,7 @@
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
                                 <div class="d-inline-flex align-items-center">
-                                    <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
+                                    <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
                                 </div>
                                 <hr>
                                 <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Status Pengajuan</h6>
@@ -127,11 +137,31 @@
                             </div>
                             <hr>
                             <ul class="list-style-none mb-0">
+                                <small>
+                                    <b>
+                                        Daftar Pilihan Lab
+                                    </b>
+                                </small>
+                                <?php
+                                $no = 0;
+                                foreach ($pengajuanlab as $datapengajuanlab) {
+                                ?>
+                                    <li>
+                                        <i class="fas fa-circle text-warning font-10 mr-2"></i>
+                                        <span class="text-muted"><?= $datapengajuanlab['nama_lab'] ?> - <?= "Rp." . number_format($datapengajuanlab['harga'], 2, ',', '.') ?></small></span>
+                                    </li>
+                                <?php } ?>
+                                <hr>
+                                <small>
+                                    <b>
+                                        Lab yang dipilih
+                                    </b>
+                                </small>
                                 <?php
                                 if ($data['nama_lab'] != null) {
                                 ?>
                                     <li>
-                                        <i class="fas fa-circle text-danger font-10 mr-2"></i>
+                                        <i class="fas fa-circle text-success font-10 mr-2"></i>
                                         <span class="text-muted"><?= $data['nama_lab'] ?> - <?= "Rp." . number_format($data['harga_lab'], 2, ',', '.') ?></small></span>
                                     </li>
                                 <?php } ?>
@@ -183,6 +213,8 @@
             <?php include('modal_cancel.php'); ?>
             <?php include('modal_upload.php'); ?>
             <?php include('modal_lab.php'); ?>
+            <?php include('modal_update_status.php'); ?>
+            <?php include('modal_selesai.php'); ?>
         <?php } ?>
     </div>
 </div>

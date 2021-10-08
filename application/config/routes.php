@@ -67,10 +67,12 @@ $route['add-pengajuan-lab'] = 'pengajuan/pengajuan_lab';
 $route['add-lab-pengajuan'] = 'pengajuan/lab_pengajuan';
 $route['delete-pengajuan/(:any)'] = 'pengajuan/delete_pengajuan/$1';
 $route['edit-pengajuan'] = 'pengajuan/edit_pengajuan';
+$route['update-status-pengajuan'] = 'pengajuan/update_status';
 $route['cancel-pengajuan'] = 'pengajuan/cancel_pengajuan';
 $route['riwayat-pembatalan'] = 'pengajuan/riwayat_pembatalan';
 $route['upload-file'] = 'pengajuan/upload_file';
-$route['detail-pengajuan'] = 'pengajuan/detail_pengajuan';
+$route['pengajuan-selesai'] = 'pengajuan/pengajuan_selesai';
+$route['detail-pengajuan/(:any)'] = 'pengajuan/detail_pengajuan/$1';
 //alat
 $route['data-alat'] = 'alat/index';
 $route['data-semua-alat'] = 'alat/semua_alat';

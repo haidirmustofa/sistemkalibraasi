@@ -31,6 +31,15 @@ class M_dashboard extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getAlatDivisiByKondisi($divisi)
+    {
+        $this->db->select('*, COUNT(kondisi_alat) as total')
+            ->from('tbl_alat')
+            ->where('id_divisi', $divisi)
+            ->group_by('kondisi_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getPengajuanByStatus()
     {
         $this->db->select('*, COUNT(status_pengajuan) as total')
@@ -43,6 +52,15 @@ class M_dashboard extends CI_Model
     {
         $this->db->select('*, COUNT(divisi) as total')
             ->from('tbl_alat')
+            ->group_by('divisi');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatDivisi($divisi)
+    {
+        $this->db->select('*, COUNT(divisi) as total')
+            ->from('tbl_alat')
+            ->where('id_divisi', $divisi)
             ->group_by('divisi');
         $query = $this->db->get()->result_array();
         return $query;
