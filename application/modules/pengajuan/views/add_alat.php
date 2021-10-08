@@ -15,14 +15,15 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Pilih Alat yang ingin dikalibrasi</h4>
-                        <div class="table-responsive">
-                            <form method="post" action="<?= base_url('add-pengajuan-alat') ?>">
-                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
+        <form method="post" action="<?= base_url('add-pengajuan-alat') ?>">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <input type="submit" class="btn btn-danger mb-5 float-right" value="Simpan dan Buat Pengajuan">
+                            <h4 class="card-title">Pilih Alat yang ingin dikalibrasi</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered no-wrap">
                                     <thead class="bg-primary text-white">
                                         <tr>
                                             <th>#</th>
@@ -82,12 +83,12 @@
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                        </div>
-                        <input type="submit" class="btn btn-primary mt-5 float-right" value="Simpan dan Buat Pengajuan">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            </div>
+
+        </form>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>

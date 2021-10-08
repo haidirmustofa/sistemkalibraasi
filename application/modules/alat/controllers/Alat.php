@@ -160,6 +160,7 @@ class Alat extends MY_Controller
         $y = 0;
         while ($y < $jumlah) {
             $id_divisi = $data['divisi'][$y]['id_divisi'];
+            $id = $this->M_alat->getDivisi($id_divisi);
             $data_['id_divisi'] = $data['divisi'][$y]['id_divisi'];
             $data_['nama_divisi'] = $data['divisi'][$y]['divisi'];
             if (!empty($id)) {

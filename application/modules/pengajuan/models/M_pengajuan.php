@@ -6,6 +6,10 @@ class M_pengajuan extends CI_Model
     {
         $this->db->insert('tbl_pengajuan', $params);
     }
+    public function inputnotif($params)
+    {
+        $this->db->insert('tbl_notif', $params);
+    }
     public function inputFile($params)
     {
         $this->db->insert('tbl_dokumen', $params);
@@ -140,6 +144,7 @@ class M_pengajuan extends CI_Model
     {
         $this->db->select('*')
             ->from('tbl_alat')
+            ->order_by('nama_alat', 'asc')
             ->where('id_divisi', $id);
         $query = $this->db->get()->result_array();
         return $query;

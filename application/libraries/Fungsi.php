@@ -14,4 +14,11 @@ class Fungsi
     $user_data = $this->ci->M_auth->get($userid)->row();
     return $user_data;
   }
+  function notif()
+  {
+    $this->ci->load->model('notif/M_notif');
+    $user_divition = $this->ci->session->userdata('user_divition');
+    $notif_data = $this->ci->M_notif->get($user_divition);
+    return $notif_data;
+  }
 }
