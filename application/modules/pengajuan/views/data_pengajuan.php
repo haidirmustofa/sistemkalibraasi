@@ -48,6 +48,12 @@
                                                         <a class="dropdown-item" href="<?= base_url('detail-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>">Detail Pengajuan</a>
                                                     </div>
                                                 </div>
+                                                <?php if ($data['is_new'] == 1) { ?>
+                                                    <span class="badge bg-danger font-10 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none"><small> Baru </small></span>
+                                                <?php } ?>
+                                                <?php if ($data['is_new'] == 2) { ?>
+                                                    <span class="badge bg-primary font-10 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none"><small> Update Baru </small></span>
+                                                <?php } ?>
                                             </td>
                                             <td><small>
                                                     <?php

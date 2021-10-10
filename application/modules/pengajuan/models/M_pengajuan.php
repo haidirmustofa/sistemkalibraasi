@@ -6,6 +6,10 @@ class M_pengajuan extends CI_Model
     {
         $this->db->insert('tbl_pengajuan', $params);
     }
+    public function inputriwayat($params)
+    {
+        $this->db->insert('tbl_riwayat_pengajuan', $params);
+    }
     public function inputnotif($params)
     {
         $this->db->insert('tbl_notif', $params);
@@ -78,6 +82,15 @@ class M_pengajuan extends CI_Model
             ->join('tbl_status', 'tbl_pengajuan.status_pengajuan = tbl_status.id_status', 'left')
             ->join('tbl_lab', 'tbl_pengajuan.lab = tbl_lab.id_lab', 'left')
             ->join('tbl_divisi', 'tbl_pengajuan.divisi_pengaju = tbl_divisi.id_divisi', 'left');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAktifitas($id)
+    {
+        $this->db->select('*')
+            ->from('tbl_riwayat_pengajuan')
+            ->where('tbl_riwayat_pengajuan.id_pengajuan', $id)
+            ->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_riwayat_pengajuan.id_pengajuan');
         $query = $this->db->get()->result_array();
         return $query;
     }

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 11:46 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Waktu pembuatan: 10 Okt 2021 pada 19.19
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_alat`
+-- Struktur dari tabel `tbl_alat`
 --
 
 CREATE TABLE `tbl_alat` (
@@ -44,7 +45,7 @@ CREATE TABLE `tbl_alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_alat`
+-- Dumping data untuk tabel `tbl_alat`
 --
 
 INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type_alat`, `merek_alat`, `interval_kalibrasi_alat`, `waktu_kalibrasi_alat`, `keterangan_alat`, `kondisi_alat`, `status_alat`, `id_divisi`, `divisi`) VALUES
@@ -248,7 +249,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (3754, 185, 'Video Noise Generator', 'B 010171', 'Video Noise Generator', 'Tektronix 1434', NULL, NULL, NULL, 'BT', NULL, NULL, NULL),
 (3755, 185, 'Video Signal Corector', '300279/030', 'Video Signal Corector', 'Rohde & Schwarz A V E F', NULL, NULL, NULL, 'RR', NULL, NULL, NULL),
 (3756, 185, 'Watt Ampvoltmeter', '-', 'Watt Ampvoltmeter', 'VAW Voltawatt -', NULL, NULL, NULL, 'BT', NULL, NULL, NULL),
-(3757, 185, 'Wide Band Synthesizer', 'M 38886', 'Wide Band Synthesizer', 'Anritsu MG40C', NULL, NULL, NULL, 'BT', NULL, NULL, NULL),
+(3757, 185, 'Wide Band Synthesizer', 'M 38886', 'Wide Band Synthesizer', 'Anritsu MG40C', 1, '2021-10-14', 'Ada', 'BT', NULL, NULL, ''),
 (4093, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Sanwa CD800', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (4094, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Sanwa CD800', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (4095, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Sanwa CD801', NULL, NULL, NULL, 'BP', NULL, NULL, NULL),
@@ -272,7 +273,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (4401, 185, 'SWR & Power Meter', '-', 'SWR & Power Meter', 'Daiwa CN-801 HP3', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (4402, 185, 'SWR & Power Meter', '-', 'SWR & Power Meter', 'Daiwa CN-801 HP3', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (4403, 185, 'Torque Tester', '-', 'Torque Tester', 'EZ-Torq H101', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
-(4404, 185, 'Wrist Strap Tester', '-', 'Wrist Strap Tester', 'Exso WST-698', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
+(4404, 185, 'Wrist Strap Tester', '-', 'Wrist Strap Tester', 'Exso WST-698', 1, '2020-10-10', 'Ada', 'BT', NULL, 399, 'Production Operation'),
 (4405, 185, 'Thermometer', '-', 'Thermometer', 'Fluke 52 II', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (5334, 185, 'Test Picture', '-', 'Test Picture', 'Keithley 8006', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (5335, 185, 'Solar Cell Tester', '-', 'Solar Cell Tester', 'Zuhai Gmee Solar -', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
@@ -322,7 +323,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (5734, 185, 'Testing Device', '-', 'Testing Device', 'Alpro ZANAPI, for ZANAP Module', NULL, NULL, NULL, 'BP', NULL, 398, 'Product Engineering'),
 (5735, 185, 'Vertical Manual Lever', '322886', 'Vertical Manual Lever', 'Imada SVL-1000N', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (5736, 185, 'Video Patern Generator', 'C022471', 'Video Patern Generator', 'Tektronix SPG300', NULL, NULL, NULL, 'BT', NULL, 398, 'Product Engineering'),
-(5737, 185, 'Wire Grip', '-', 'Wire Grip', 'Imada FW-12', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
+(5737, 185, 'Wire Grip', '-', 'Wire Grip', 'Imada FW-12', 1, '2020-02-12', 'Ada', 'BP', NULL, 399, 'Production Operation'),
 (5738, 185, 'Coating Thickness Tester', '-', 'Coating Thickness Tester', 'Extech Instrument CG204', NULL, NULL, NULL, 'BP', NULL, 398, 'Product Engineering'),
 (5755, 185, 'Light Meter', '-', 'Light Meter', 'Extech Instrument EA30', NULL, NULL, NULL, 'BP', NULL, 398, 'Product Engineering'),
 (5756, 185, 'Frequency Meter', '1823112411030005', 'Frequency Meter', 'BK Precision 1823A', NULL, NULL, NULL, 'BT', NULL, 398, 'Product Engineering'),
@@ -479,7 +480,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (9759, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9760, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9761, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
-(9773, 185, 'ESD Tester', '-', 'ESD Tester', 'Bakon BK698A', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
+(9773, 185, 'ESD Tester', '-', 'ESD Tester', 'Bakon BK698A', NULL, '2021-10-07', NULL, 'BP', NULL, 399, 'Production Operation'),
 (9774, 185, 'ESD Tester', '-', 'ESD Tester', 'Bakon BK698A', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (9776, 185, 'Digital Force Gauge', '-', 'Digital Force Gauge', 'Lutron FG-5005', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (9777, 185, 'Thermometer', '-', 'Thermometer', 'Hakko FG 100-4, Soldering Tester', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
@@ -487,7 +488,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (9779, 185, 'Thermometer', '-', 'Thermometer', 'Krisbow KW0600280, Infra Red -50° to 280° C', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
 (9833, 185, 'Insulation Tester', '-', 'Insulation Tester', 'Hioki IR 4057', NULL, NULL, NULL, 'BP', NULL, 398, 'Product Engineering'),
 (9834, 185, 'DC Mili Ohm Meter', '-', 'DC Mili Ohm Meter', 'GW Instek GOM 802', NULL, NULL, NULL, 'BP', NULL, 398, 'Product Engineering'),
-(9845, 185, 'Handheld Digital Microscope', '-', 'Handheld Digital Microscope', 'Dinolite AM73915 Series', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
+(9845, 185, 'Handheld Digital Microscope', '-', 'Handheld Digital Microscope', 'Dinolite AM73915 Series', NULL, '2021-10-07', NULL, 'BT', NULL, 399, 'Production Operation'),
 (9846, 185, 'Handheld Digital Microscope', '-', 'Handheld Digital Microscope', 'Dinolite AM73915 Series', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9847, 185, 'Handheld Digital Microscope', '-', 'Handheld Digital Microscope', 'Dinolite AM73915 Series', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9848, 185, 'Handheld Digital Microscope', '-', 'Handheld Digital Microscope', 'Dinolite AM73915 Series', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
@@ -508,7 +509,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (10219, 185, 'Cable IQ Qualification Tester', '-', 'Cable IQ Qualification Tester', 'Fluke  CIQ-100', NULL, NULL, NULL, 'BP', NULL, NULL, NULL),
 (10220, 185, 'MicroScanner2 Cable Verifier', '-', 'MicroScanner2 Cable Verifier', 'Fluke  MS2-KIT', NULL, NULL, NULL, 'BP', NULL, NULL, NULL),
 (10223, 185, 'Spektrum Analyzer', '1846080', 'Spektrum Analyzer', 'Anritsu S362E', NULL, NULL, NULL, 'BP', NULL, NULL, NULL),
-(10224, 185, 'Asesoris Temperature Tracker', '-', 'Asesoris Temperature Tracker', 'Solder Star Option', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
+(10224, 196, 'Asesoris Temperature Tracker', '-', 'Asesoris Temperature Tracker', 'Solder Star Option', 2, '2021-10-07', 'Ada', 'BP', NULL, 399, 'Production Operation'),
 (10231, 185, 'Tracker', '-', 'Tracker', 'Huntron 3200S', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (10239, 185, 'Power Meter', '-', 'Power Meter', 'Bird 4421', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (10267, 185, 'Temperature Tracker', '-', 'Temperature Tracker', 'Solder Star Pro-6 Channel (R-0625P)', NULL, NULL, NULL, 'BP', NULL, 399, 'Production Operation'),
@@ -541,7 +542,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_divisi`
+-- Struktur dari tabel `tbl_divisi`
 --
 
 CREATE TABLE `tbl_divisi` (
@@ -550,7 +551,7 @@ CREATE TABLE `tbl_divisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_divisi`
+-- Dumping data untuk tabel `tbl_divisi`
 --
 
 INSERT INTO `tbl_divisi` (`id_divisi`, `nama_divisi`) VALUES
@@ -563,7 +564,7 @@ INSERT INTO `tbl_divisi` (`id_divisi`, `nama_divisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_dokumen`
+-- Struktur dari tabel `tbl_dokumen`
 --
 
 CREATE TABLE `tbl_dokumen` (
@@ -574,18 +575,19 @@ CREATE TABLE `tbl_dokumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_dokumen`
+-- Dumping data untuk tabel `tbl_dokumen`
 --
 
 INSERT INTO `tbl_dokumen` (`id_dokumen`, `nama_dokumen`, `file_dokumen`, `id_pengajuan`) VALUES
 (5, 'Bukti Pembayaran', 'Bukti_Pembayaran_2021-10-08_14-05-10.pdf', 22),
 (6, 'Bukti Penyerahan ', 'Bukti_Penyerahan__2021-10-08_14-05-32.pdf', 22),
-(7, 'Bukti Pembayaran', 'Bukti_Pembayaran_2021-10-08_14-33-49.pdf', 25);
+(7, 'Bukti Pembayaran', 'Bukti_Pembayaran_2021-10-08_14-33-49.pdf', 25),
+(8, 'Invoice Pembayaran', 'Invoice_Pembayaran_2021-10-10_22-15-17.docx', 37);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_lab`
+-- Struktur dari tabel `tbl_lab`
 --
 
 CREATE TABLE `tbl_lab` (
@@ -594,7 +596,7 @@ CREATE TABLE `tbl_lab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_lab`
+-- Dumping data untuk tabel `tbl_lab`
 --
 
 INSERT INTO `tbl_lab` (`id_lab`, `nama_lab`) VALUES
@@ -606,12 +608,13 @@ INSERT INTO `tbl_lab` (`id_lab`, `nama_lab`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_notif`
+-- Struktur dari tabel `tbl_notif`
 --
 
 CREATE TABLE `tbl_notif` (
   `id_notif` int(11) NOT NULL,
   `notif_status` varchar(100) DEFAULT NULL,
+  `notif_title` varchar(100) DEFAULT NULL,
   `notif_messages` varchar(100) DEFAULT NULL,
   `notif_from` varchar(100) DEFAULT NULL,
   `notif_for` varchar(100) DEFAULT NULL,
@@ -620,17 +623,22 @@ CREATE TABLE `tbl_notif` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_notif`
+-- Dumping data untuk tabel `tbl_notif`
 --
 
-INSERT INTO `tbl_notif` (`id_notif`, `notif_status`, `notif_messages`, `notif_from`, `notif_for`, `notif_time`, `notif_date`) VALUES
-(1, '1', 'Pengajuan Baru Dari Haidir', '399', 'Admin', '11:01:30am', '2021-10-08'),
-(2, '1', 'Pengajuan Baru Dari ', '399', 'Admin', '11:02:59am', '2021-10-08');
+INSERT INTO `tbl_notif` (`id_notif`, `notif_status`, `notif_title`, `notif_messages`, `notif_from`, `notif_for`, `notif_time`, `notif_date`) VALUES
+(1, '0', 'Pengajuan Baru', 'Pengajuan Baru Dari Haidir', '399', 'Admin', '11:01:30am', '2021-10-08'),
+(2, '1', 'Pemilihan Lab', 'Pengajuan Baru Dari Haidir', '399', 'Admin', '11:02:59am', '2021-10-08'),
+(3, '1', 'Perubahan Status', 'Pengajuan Baru Dari ', 'Admin', '399', '11:02:59am', '2021-10-08'),
+(4, '1', NULL, 'Pengajuan Baru Dari ', '399', 'Admin', '04:45:21 pm', '2021-10-10'),
+(5, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '04:46:24 pm', '2021-10-10'),
+(6, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '05:05:58 pm', '2021-10-10'),
+(7, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '06:36:33 pm', '2021-10-10');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pembatalan`
+-- Struktur dari tabel `tbl_pembatalan`
 --
 
 CREATE TABLE `tbl_pembatalan` (
@@ -640,7 +648,7 @@ CREATE TABLE `tbl_pembatalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_pembatalan`
+-- Dumping data untuk tabel `tbl_pembatalan`
 --
 
 INSERT INTO `tbl_pembatalan` (`id_pembatalan`, `id_pengajuan`, `keterangan_pembatalan`) VALUES
@@ -649,7 +657,7 @@ INSERT INTO `tbl_pembatalan` (`id_pembatalan`, `id_pengajuan`, `keterangan_pemba
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pengajuan`
+-- Struktur dari tabel `tbl_pengajuan`
 --
 
 CREATE TABLE `tbl_pengajuan` (
@@ -664,33 +672,38 @@ CREATE TABLE `tbl_pengajuan` (
   `lab` int(11) DEFAULT NULL,
   `harga_lab` varchar(100) DEFAULT NULL,
   `is_available` int(11) DEFAULT NULL,
-  `pengajuan_slug` varchar(100) DEFAULT NULL
+  `pengajuan_slug` varchar(100) DEFAULT NULL,
+  `is_new` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_pengajuan`
+-- Dumping data untuk tabel `tbl_pengajuan`
 --
 
-INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `nama_pengaju`, `id_user`, `tanggal_pengajuan`, `selesai_pengajuan`, `status_pengajuan`, `deskripsi_pengajuan`, `divisi_pengaju`, `lab`, `harga_lab`, `is_available`, `pengajuan_slug`) VALUES
-(21, 'USER 1', 194, '2021-10-08', NULL, 2, 'Pengajuan Pertama USER 1', '388', NULL, NULL, 1, '0n8NAOXYmGsIKfiyhMTeBJkHZ1aPu2ob9LgVjRprF7Dtq5zw641633675550'),
-(22, 'USER 1', 194, '2021-10-08', NULL, 3, 'Pengajuan Kedua USER 1', '388', 6, '200000', 1, 'JV8uTwcIMNyrF9Kz2a3EnBAhXmsCP5dLW7kZG1tjOfSgelxYvb1633675641'),
-(23, 'Jaya', 196, '2021-10-08', NULL, 1, 'Milimeter sekrup', '399', NULL, NULL, 1, 'k8cszo52HBlL9meJwgxRvjnOVU6rbdTFfpZ3iNaCQXDKI1W0AP1633678148'),
-(24, 'Jaya', 196, '2021-10-08', NULL, 2, 'Jasdad', '399', NULL, NULL, 1, 'lz2YO0IZSC5yNrwV7mku3WURJAspdo1KBaPfQDc6ethnjbiT8v1633678236'),
-(25, 'j', 196, '2021-10-08', NULL, 3, 's', '399', 6, '300000', 1, 'Z1JjSpK3yqIsVvxw4hNDLGCtBW08gz7lQPkRdXHcO6ufE2Y9ra1633678266'),
-(26, 'tes', 196, '2021-10-08', NULL, 1, 'tes', '399', NULL, NULL, 1, 'Kb0UFGtVxZ24pqLrD1N3gI6yXewCnPasQkHJhYMclBz87dSjuv1633679057'),
-(27, 'nmm', 196, '2021-10-08', NULL, 1, 'fghjk', '399', NULL, NULL, 1, 'YTAj9rsUfKqnMiQX8mVv2Rc7hopk1uwW6HF0B4ydEGDeOtSlxN1633679092'),
-(28, 'sx', 196, '2021-10-08', NULL, 1, 'xs', '399', NULL, NULL, 1, 'sf02RYdVqjlU36XEOJkMonNat1I8hyBH7iF9wGLZbuTKS4mACg1633679150'),
-(29, 'hasghsdfsfsd', 196, '2021-10-08', NULL, 1, 'dfd', '399', NULL, NULL, 1, '6A0YbiqaBy3hcKpFjvRgfds9V7EJISWo2TQwMG5Zx4Un8DlLtO1633679205'),
-(30, 'Tes', 194, '2021-10-08', NULL, 1, 'as', '388', NULL, NULL, 0, 'HUAFuV3eoI6kGh5rZ8jlJzQN7YXDwxLmRvd1sT0gMy2C4OiBnt1633682231'),
-(31, 'da', 196, '2021-10-08', NULL, 1, 'dasd', '399', NULL, NULL, 1, 'qxz8FIXjC1MD3waVmB0kvLUy9GnNpZu4EWgfTicYtPOQsKSRoe1633682374'),
-(32, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, '0PWImJ5C27GXSeMQnRgVjqiAHFoyrsvUB3ZhLdfblku8Kta6Tc1633683617'),
-(33, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, 'xfIQmAjurRpt1ldL8CvWX6biMkUnTPq9KSFYhD52w7s3HNZVEG1633683636'),
-(34, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 1, 'VuvEDQFadYAgHI7xf4Bslmjzqchobt1JT9wL0OekM8N6yrRZSp1633683690');
+INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `nama_pengaju`, `id_user`, `tanggal_pengajuan`, `selesai_pengajuan`, `status_pengajuan`, `deskripsi_pengajuan`, `divisi_pengaju`, `lab`, `harga_lab`, `is_available`, `pengajuan_slug`, `is_new`) VALUES
+(21, 'USER 1', 194, '2021-10-08', NULL, 2, 'Pengajuan Pertama USER 1', '388', NULL, NULL, 1, '0n8NAOXYmGsIKfiyhMTeBJkHZ1aPu2ob9LgVjRprF7Dtq5zw641633675550', 0),
+(22, 'USER 1', 194, '2021-10-08', NULL, 3, 'Pengajuan Kedua USER 1', '388', 6, '200000', 1, 'JV8uTwcIMNyrF9Kz2a3EnBAhXmsCP5dLW7kZG1tjOfSgelxYvb1633675641', NULL),
+(23, 'Jaya', 196, '2021-10-08', NULL, 1, 'Milimeter sekrup', '399', NULL, NULL, 1, 'k8cszo52HBlL9meJwgxRvjnOVU6rbdTFfpZ3iNaCQXDKI1W0AP1633678148', NULL),
+(24, 'Jaya', 196, '2021-10-08', NULL, 2, 'Jasdad', '399', NULL, NULL, 1, 'lz2YO0IZSC5yNrwV7mku3WURJAspdo1KBaPfQDc6ethnjbiT8v1633678236', NULL),
+(25, 'j', 196, '2021-10-08', NULL, 3, 's', '399', 6, '300000', 1, 'Z1JjSpK3yqIsVvxw4hNDLGCtBW08gz7lQPkRdXHcO6ufE2Y9ra1633678266', NULL),
+(26, 'tes', 196, '2021-10-08', NULL, 1, 'tes', '399', NULL, NULL, 1, 'Kb0UFGtVxZ24pqLrD1N3gI6yXewCnPasQkHJhYMclBz87dSjuv1633679057', NULL),
+(27, 'nmm', 196, '2021-10-08', NULL, 1, 'fghjk', '399', NULL, NULL, 1, 'YTAj9rsUfKqnMiQX8mVv2Rc7hopk1uwW6HF0B4ydEGDeOtSlxN1633679092', NULL),
+(28, 'sx', 196, '2021-10-08', NULL, 1, 'xs', '399', NULL, NULL, 1, 'sf02RYdVqjlU36XEOJkMonNat1I8hyBH7iF9wGLZbuTKS4mACg1633679150', NULL),
+(29, 'hasghsdfsfsd', 196, '2021-10-08', NULL, 1, 'dfd', '399', NULL, NULL, 1, '6A0YbiqaBy3hcKpFjvRgfds9V7EJISWo2TQwMG5Zx4Un8DlLtO1633679205', NULL),
+(30, 'Tes', 194, '2021-10-08', NULL, 1, 'as', '388', NULL, NULL, 0, 'HUAFuV3eoI6kGh5rZ8jlJzQN7YXDwxLmRvd1sT0gMy2C4OiBnt1633682231', NULL),
+(31, 'da', 196, '2021-10-08', NULL, 1, 'dasd', '399', NULL, NULL, 1, 'qxz8FIXjC1MD3waVmB0kvLUy9GnNpZu4EWgfTicYtPOQsKSRoe1633682374', NULL),
+(32, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, '0PWImJ5C27GXSeMQnRgVjqiAHFoyrsvUB3ZhLdfblku8Kta6Tc1633683617', NULL),
+(33, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, 'xfIQmAjurRpt1ldL8CvWX6biMkUnTPq9KSFYhD52w7s3HNZVEG1633683636', NULL),
+(34, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 1, 'VuvEDQFadYAgHI7xf4Bslmjzqchobt1JT9wL0OekM8N6yrRZSp1633683690', NULL),
+(35, 'Haidir', 196, '2021-10-10', NULL, 1, 'Kalibrasi Divisi EPP', '399', NULL, NULL, 1, 'ft7HYD41cQuI9CRSwnKksU8XJV3qgPGbjhvMOZLB06NmzEoxTW1633877108', NULL),
+(36, 'Mustofa', 196, '2021-10-10', NULL, 1, 'Pengajuan 2', '399', NULL, NULL, 1, 'Uj9n0uKOi2yHGPYMe71arIvLoEQVhDqNtksXzdJFwWxfSgZTbl1633877177', 0),
+(37, 'Haidir', 196, '2021-10-10', NULL, 3, 'Pengajuan alat divisi epp', '399', 7, '300000', 1, 'rJhMypQ25oH9iIjq8kRguBO3X6aLc4W1CFTGAtSVU0Ydxmzbsf1633878310', 0),
+(38, 'tes', 196, '2021-10-10', NULL, 1, 'tes', '399', NULL, NULL, 1, 'viAfte6WsCOGzmU5g4j9P17Ep3NoMxVBaLJTDQwX0FlrY28dRb1633883789', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pengajuan_alat`
+-- Struktur dari tabel `tbl_pengajuan_alat`
 --
 
 CREATE TABLE `tbl_pengajuan_alat` (
@@ -700,7 +713,7 @@ CREATE TABLE `tbl_pengajuan_alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_pengajuan_alat`
+-- Dumping data untuk tabel `tbl_pengajuan_alat`
 --
 
 INSERT INTO `tbl_pengajuan_alat` (`id_pengajuan_alat`, `id_pengajuan`, `id_alat`) VALUES
@@ -725,12 +738,22 @@ INSERT INTO `tbl_pengajuan_alat` (`id_pengajuan_alat`, `id_pengajuan`, `id_alat`
 (61, 34, 11029),
 (62, 34, 10224),
 (63, 34, 4383),
-(64, 34, 11029);
+(64, 34, 11029),
+(65, 35, 10224),
+(66, 35, 4386),
+(67, 35, 4387),
+(68, 36, 5723),
+(69, 36, 4397),
+(70, 36, 4398),
+(71, 37, 10224),
+(72, 37, 9773),
+(73, 37, 9845),
+(74, 38, 4384);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pengajuan_lab`
+-- Struktur dari tabel `tbl_pengajuan_lab`
 --
 
 CREATE TABLE `tbl_pengajuan_lab` (
@@ -741,7 +764,7 @@ CREATE TABLE `tbl_pengajuan_lab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_pengajuan_lab`
+-- Dumping data untuk tabel `tbl_pengajuan_lab`
 --
 
 INSERT INTO `tbl_pengajuan_lab` (`id_pengajuan_lab`, `id_pengajuan`, `id_lab`, `harga`) VALUES
@@ -749,12 +772,39 @@ INSERT INTO `tbl_pengajuan_lab` (`id_pengajuan_lab`, `id_pengajuan`, `id_lab`, `
 (11, 22, 6, '200000'),
 (12, 22, 7, '300000'),
 (13, 25, 5, '100000'),
-(14, 25, 6, '300000');
+(14, 25, 6, '300000'),
+(15, 37, 5, '100000'),
+(16, 37, 7, '300000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_status`
+-- Struktur dari tabel `tbl_riwayat_pengajuan`
+--
+
+CREATE TABLE `tbl_riwayat_pengajuan` (
+  `id_riwayat_pengajuan` int(11) NOT NULL,
+  `id_pengajuan` int(11) DEFAULT NULL,
+  `date_riwayat_pengajuan` varchar(100) DEFAULT NULL,
+  `time_riwayat_pengajuan` varchar(100) DEFAULT NULL,
+  `pesan_riwayat_pengajuan` varchar(500) DEFAULT NULL,
+  `dari` varchar(10) DEFAULT NULL,
+  `untuk` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_riwayat_pengajuan`
+--
+
+INSERT INTO `tbl_riwayat_pengajuan` (`id_riwayat_pengajuan`, `id_pengajuan`, `date_riwayat_pengajuan`, `time_riwayat_pengajuan`, `pesan_riwayat_pengajuan`, `dari`, `untuk`) VALUES
+(1, 38, '2021-10-10', '11:58:10', 'Pembuatan Pengajuan Baru', 'Member', 'Admin'),
+(2, 38, '2021-10-10', '11:58:10', 'Perubahan Status SEDANG dI Review', NULL, NULL),
+(3, 37, '2021-10-10', '11:58:10', 'Upload Dokumen Baru \"Invoice\"', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
@@ -764,7 +814,7 @@ CREATE TABLE `tbl_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_status`
+-- Dumping data untuk tabel `tbl_status`
 --
 
 INSERT INTO `tbl_status` (`id_status`, `nama_status`, `role_status`) VALUES
@@ -779,7 +829,7 @@ INSERT INTO `tbl_status` (`id_status`, `nama_status`, `role_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -797,7 +847,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_fullname`, `user_email`, `user_phone`, `user_divition`, `user_account`, `user_slug`, `user_status`, `isAccount`) VALUES
@@ -811,137 +861,149 @@ INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_fullname`, `u
 --
 
 --
--- Indexes for table `tbl_alat`
+-- Indeks untuk tabel `tbl_alat`
 --
 ALTER TABLE `tbl_alat`
   ADD PRIMARY KEY (`id_alat`);
 
 --
--- Indexes for table `tbl_divisi`
+-- Indeks untuk tabel `tbl_divisi`
 --
 ALTER TABLE `tbl_divisi`
   ADD PRIMARY KEY (`id_divisi`);
 
 --
--- Indexes for table `tbl_dokumen`
+-- Indeks untuk tabel `tbl_dokumen`
 --
 ALTER TABLE `tbl_dokumen`
   ADD PRIMARY KEY (`id_dokumen`);
 
 --
--- Indexes for table `tbl_lab`
+-- Indeks untuk tabel `tbl_lab`
 --
 ALTER TABLE `tbl_lab`
   ADD PRIMARY KEY (`id_lab`);
 
 --
--- Indexes for table `tbl_notif`
+-- Indeks untuk tabel `tbl_notif`
 --
 ALTER TABLE `tbl_notif`
   ADD PRIMARY KEY (`id_notif`);
 
 --
--- Indexes for table `tbl_pembatalan`
+-- Indeks untuk tabel `tbl_pembatalan`
 --
 ALTER TABLE `tbl_pembatalan`
   ADD PRIMARY KEY (`id_pembatalan`);
 
 --
--- Indexes for table `tbl_pengajuan`
+-- Indeks untuk tabel `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indexes for table `tbl_pengajuan_alat`
+-- Indeks untuk tabel `tbl_pengajuan_alat`
 --
 ALTER TABLE `tbl_pengajuan_alat`
   ADD PRIMARY KEY (`id_pengajuan_alat`);
 
 --
--- Indexes for table `tbl_pengajuan_lab`
+-- Indeks untuk tabel `tbl_pengajuan_lab`
 --
 ALTER TABLE `tbl_pengajuan_lab`
   ADD PRIMARY KEY (`id_pengajuan_lab`);
 
 --
--- Indexes for table `tbl_status`
+-- Indeks untuk tabel `tbl_riwayat_pengajuan`
+--
+ALTER TABLE `tbl_riwayat_pengajuan`
+  ADD PRIMARY KEY (`id_riwayat_pengajuan`);
+
+--
+-- Indeks untuk tabel `tbl_status`
 --
 ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_alat`
+-- AUTO_INCREMENT untuk tabel `tbl_alat`
 --
 ALTER TABLE `tbl_alat`
-  MODIFY `id_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11873;
+  MODIFY `id_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11384;
 
 --
--- AUTO_INCREMENT for table `tbl_divisi`
+-- AUTO_INCREMENT untuk tabel `tbl_divisi`
 --
 ALTER TABLE `tbl_divisi`
-  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27519;
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=411;
 
 --
--- AUTO_INCREMENT for table `tbl_dokumen`
+-- AUTO_INCREMENT untuk tabel `tbl_dokumen`
 --
 ALTER TABLE `tbl_dokumen`
-  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `tbl_lab`
+-- AUTO_INCREMENT untuk tabel `tbl_lab`
 --
 ALTER TABLE `tbl_lab`
   MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `tbl_notif`
+-- AUTO_INCREMENT untuk tabel `tbl_notif`
 --
 ALTER TABLE `tbl_notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_pembatalan`
+-- AUTO_INCREMENT untuk tabel `tbl_pembatalan`
 --
 ALTER TABLE `tbl_pembatalan`
   MODIFY `id_pembatalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tbl_pengajuan`
+-- AUTO_INCREMENT untuk tabel `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `tbl_pengajuan_alat`
+-- AUTO_INCREMENT untuk tabel `tbl_pengajuan_alat`
 --
 ALTER TABLE `tbl_pengajuan_alat`
-  MODIFY `id_pengajuan_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_pengajuan_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT for table `tbl_pengajuan_lab`
+-- AUTO_INCREMENT untuk tabel `tbl_pengajuan_lab`
 --
 ALTER TABLE `tbl_pengajuan_lab`
-  MODIFY `id_pengajuan_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pengajuan_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `tbl_status`
+-- AUTO_INCREMENT untuk tabel `tbl_riwayat_pengajuan`
+--
+ALTER TABLE `tbl_riwayat_pengajuan`
+  MODIFY `id_riwayat_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_status`
 --
 ALTER TABLE `tbl_status`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;

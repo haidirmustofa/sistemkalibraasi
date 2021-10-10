@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-
 class M_dashboard extends CI_Model
 {
     public function getUser()
@@ -13,6 +12,52 @@ class M_dashboard extends CI_Model
     {
         $this->db->select('*, COUNT(id_pengajuan) as total')
             ->from('tbl_pengajuan');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getCountPemberitahuanAdmin()
+    {
+        $this->db->select('*, COUNT(id_notif) as total')
+            ->where('notif_for', 'Admin')
+            ->where('notif_status', '1')
+            ->order_by('id_notif', 'desc')
+            // ->limit(10) 
+            ->from('tbl_notif');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getPemberitahuanAdmin()
+    {
+        $this->db->select('*')
+            ->where('notif_for', 'Admin')
+            ->where('notif_status', '1')
+            ->order_by('id_notif', 'desc')
+            // ->limit(10) 
+            ->from('tbl_notif');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getCountPemberitahuanMember()
+    {
+        $id = $this->fungsi->user_login()->user_divition;
+        $this->db->select('*, COUNT(id_notif) as total')
+            ->where('notif_for', $id)
+            ->where('notif_status', '1')
+            ->order_by('id_notif', 'desc')
+            // ->limit(10)
+            ->from('tbl_notif');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getPemberitahuanMember()
+    {
+        $id = $this->fungsi->user_login()->user_divition;
+        $this->db->select('*, COUNT(id_notif) as total')
+            ->where('notif_for', $id)
+            ->where('notif_status', '1')
+            ->order_by('id_notif', 'desc')
+            // ->limit(10)
+            ->from('tbl_notif');
         $query = $this->db->get()->result_array();
         return $query;
     }

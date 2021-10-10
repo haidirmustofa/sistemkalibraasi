@@ -67,6 +67,7 @@
             </div>
         </div> -->
         <?= $this->session->flashdata('message'); ?>
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -105,7 +106,7 @@
                                             $nextkalibrasi = $thn + $data['interval_kalibrasi_alat'];
                                             $newkalibrasi = $nextkalibrasi . '-' . $bln . '-' . $tgl;
                                             $date1 = date_create($newkalibrasi);
-                                            $date2 = date_create();
+                                            $date2 = date_create(date("Y-m-d"));
                                             $diff = date_diff($date1, $date2);
                                         } else {
                                             $newkalibrasi = null;
@@ -132,7 +133,7 @@
                                                     <br>
                                                     <?php
                                                     if ($newkalibrasi != null) {
-                                                        echo $diff->format("%a Hari Lagi");
+                                                        echo $diff->format("%R%a Hari");
                                                     }
                                                     ?>
                                                 </small></td>

@@ -56,6 +56,7 @@ $route['logout'] = 'auth/logout';
 
 // dashboard
 $route['dashboard'] = 'dashboard/index';
+$route['pemberitahuan'] = 'dashboard/notif';
 
 //PENGAJUAN
 $route['data-pengajuan'] = 'pengajuan/index';
@@ -73,6 +74,7 @@ $route['riwayat-pembatalan'] = 'pengajuan/riwayat_pembatalan';
 $route['upload-file'] = 'pengajuan/upload_file';
 $route['pengajuan-selesai'] = 'pengajuan/pengajuan_selesai';
 $route['detail-pengajuan/(:any)'] = 'pengajuan/detail_pengajuan/$1';
+$route['riwayat-aktifitas-pengajuan/(:any)'] = 'pengajuan/riwayat_aktifitas/$1';
 //alat
 $route['data-alat'] = 'alat/index';
 $route['data-semua-alat'] = 'alat/semua_alat';

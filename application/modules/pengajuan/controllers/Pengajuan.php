@@ -37,6 +37,9 @@ class Pengajuan extends MY_Controller
     {
         $slug_ = $this->M_pengajuan->getPengajuanBySlug($slug);
         $id =  $slug_[0]['id_pengajuan'];
+        $data['is_new'] = '0';
+        $data['id_pengajuan'] = $id;
+        $this->M_pengajuan->updatepengajuan($data);
         $params['pengajuan'] = $this->M_pengajuan->getPengajuanByID($id);
         $params['labo'] = $this->M_pengajuan->getLab();
         $params['alat'] = $this->M_pengajuan->getAlatByPengajuan();
@@ -50,7 +53,6 @@ class Pengajuan extends MY_Controller
     }
     public function tambah_alat()
     {
-
         $id = $this->fungsi->user_login()->user_divition;
         $params['alat'] = $this->M_pengajuan->getAlatByUserDivisi($id);
         $params['navbar'] = 'Data pengajuan';
@@ -104,11 +106,13 @@ class Pengajuan extends MY_Controller
         }
         $data['id_pengajuan'] = $id[0]['id_pengajuan'];
         $data['is_available'] = '1';
+        $data['is_new'] = '1';
         $this->M_pengajuan->updatepengajuan($data);
         $data_['notif_status'] = '1';
         $data_['notif_messages'] = 'Pengajuan Baru Dari ' . $this->input->post("name");
         $data_['notif_from'] = $this->fungsi->user_login()->user_divition;
         $data_['notif_for'] = 'Admin';
+        $data_['notif_title'] = 'Pengajuan Baru';
         $data_['notif_date'] = date("Y-m-d");
         $data_['notif_time'] = date("h:i:s a");
         $this->M_pengajuan->inputnotif($data_);
@@ -215,5 +219,14 @@ class Pengajuan extends MY_Controller
             <strong>Gagal - </strong> Periksa kembali ukuran atau extensi file!</div>');
         }
         return redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function riwayat_aktifitas($slug)
+    {
+        $slug_ = $this->M_pengajuan->getPengajuanBySlug($slug);
+        $id =  $slug_[0]['id_pengajuan'];
+        $params['aktifitas'] = $this->M_pengajuan->getAktifitas($id);
+        $params['navbar'] = 'Pengajuan';
+        $params['title'] = 'Riwayat Aktifitas Sistem Kalibrasi';
+        $this->template->load('template/template', 'aktifitas', $params);
     }
 }
