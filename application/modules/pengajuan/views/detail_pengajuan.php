@@ -20,17 +20,17 @@
         $no = 0;
         foreach ($pengajuan as $data) {
         ?>
-            <?php
-            if ($this->fungsi->user_login()->user_status == 'Admin') {
-            ?>
-                <div class="col-12 mb-5 ">
-                    <a class="btn btn-dark btn-sm " href="<?= base_url('riwayat-aktifitas-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>"><i class="fa fa-info"></i> Lihat Riwayat Aktifitas Pengajuan</a>
+            <div class="col-12 mb-5 ">
+                <a class="btn btn-dark btn-sm " href="<?= base_url('riwayat-aktifitas-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>"><i class="fa fa-info"></i> Lihat Riwayat Aktifitas Pengajuan</a>
+                <?php
+                if ($this->fungsi->user_login()->user_status == 'Admin') {
+                ?>
                     <a class="btn btn-danger btn-sm " href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
                     <a class="btn btn-primary btn-sm " href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
                     <a class="btn btn-success btn-sm " href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
-                </div>
-            <?php  }
-            ?>
+                <?php  }
+                ?>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="card border-right">

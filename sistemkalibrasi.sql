@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Okt 2021 pada 19.19
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.3
+-- Generation Time: Oct 11, 2021 at 08:10 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_alat`
+-- Table structure for table `tbl_alat`
 --
 
 CREATE TABLE `tbl_alat` (
@@ -45,7 +44,7 @@ CREATE TABLE `tbl_alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_alat`
+-- Dumping data for table `tbl_alat`
 --
 
 INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type_alat`, `merek_alat`, `interval_kalibrasi_alat`, `waktu_kalibrasi_alat`, `keterangan_alat`, `kondisi_alat`, `status_alat`, `id_divisi`, `divisi`) VALUES
@@ -475,7 +474,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 (9042, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Krisbow KW06-305', NULL, NULL, NULL, '-', NULL, NULL, NULL),
 (9043, 185, 'Handheld Spectrum Analyzer', '-', 'Handheld Spectrum Analyzer', 'Anritsu MS2724C, 9KHZ-20GHZ', NULL, NULL, NULL, '-', NULL, NULL, NULL),
 (9674, 185, 'Microskop', '-', 'Microskop', 'Dinolite AM2111', NULL, NULL, NULL, 'BP', NULL, NULL, NULL),
-(9756, 185, 'Digital Caliper', '-', 'Digital Caliper', 'Mitutoyo 300mm', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
+(9756, 185, 'Digital Caliper', '-', 'Digital Caliper', 'Mitutoyo 300mm', NULL, '2021-10-11', NULL, 'BT', NULL, 399, 'Production Operation'),
 (9758, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9759, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
 (9760, 185, 'Multimeter Digital', '-', 'Multimeter Digital', 'Keysight 34465A, 6 1/2 Digit', NULL, NULL, NULL, 'BT', NULL, 399, 'Production Operation'),
@@ -542,7 +541,7 @@ INSERT INTO `tbl_alat` (`id_alat`, `id_user`, `nama_alat`, `no_seri_alat`, `type
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_divisi`
+-- Table structure for table `tbl_divisi`
 --
 
 CREATE TABLE `tbl_divisi` (
@@ -551,7 +550,7 @@ CREATE TABLE `tbl_divisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_divisi`
+-- Dumping data for table `tbl_divisi`
 --
 
 INSERT INTO `tbl_divisi` (`id_divisi`, `nama_divisi`) VALUES
@@ -564,7 +563,7 @@ INSERT INTO `tbl_divisi` (`id_divisi`, `nama_divisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_dokumen`
+-- Table structure for table `tbl_dokumen`
 --
 
 CREATE TABLE `tbl_dokumen` (
@@ -575,19 +574,20 @@ CREATE TABLE `tbl_dokumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_dokumen`
+-- Dumping data for table `tbl_dokumen`
 --
 
 INSERT INTO `tbl_dokumen` (`id_dokumen`, `nama_dokumen`, `file_dokumen`, `id_pengajuan`) VALUES
 (5, 'Bukti Pembayaran', 'Bukti_Pembayaran_2021-10-08_14-05-10.pdf', 22),
 (6, 'Bukti Penyerahan ', 'Bukti_Penyerahan__2021-10-08_14-05-32.pdf', 22),
 (7, 'Bukti Pembayaran', 'Bukti_Pembayaran_2021-10-08_14-33-49.pdf', 25),
-(8, 'Invoice Pembayaran', 'Invoice_Pembayaran_2021-10-10_22-15-17.docx', 37);
+(8, 'Invoice Pembayaran', 'Invoice_Pembayaran_2021-10-10_22-15-17.docx', 37),
+(9, 'Administrasi Umum', 'Administrasi_Umum_2021-10-11_12-59-17.jpg', 44);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_lab`
+-- Table structure for table `tbl_lab`
 --
 
 CREATE TABLE `tbl_lab` (
@@ -596,7 +596,7 @@ CREATE TABLE `tbl_lab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_lab`
+-- Dumping data for table `tbl_lab`
 --
 
 INSERT INTO `tbl_lab` (`id_lab`, `nama_lab`) VALUES
@@ -608,7 +608,7 @@ INSERT INTO `tbl_lab` (`id_lab`, `nama_lab`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_notif`
+-- Table structure for table `tbl_notif`
 --
 
 CREATE TABLE `tbl_notif` (
@@ -623,7 +623,7 @@ CREATE TABLE `tbl_notif` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_notif`
+-- Dumping data for table `tbl_notif`
 --
 
 INSERT INTO `tbl_notif` (`id_notif`, `notif_status`, `notif_title`, `notif_messages`, `notif_from`, `notif_for`, `notif_time`, `notif_date`) VALUES
@@ -633,12 +633,16 @@ INSERT INTO `tbl_notif` (`id_notif`, `notif_status`, `notif_title`, `notif_messa
 (4, '1', NULL, 'Pengajuan Baru Dari ', '399', 'Admin', '04:45:21 pm', '2021-10-10'),
 (5, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '04:46:24 pm', '2021-10-10'),
 (6, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '05:05:58 pm', '2021-10-10'),
-(7, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '06:36:33 pm', '2021-10-10');
+(7, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '06:36:33 pm', '2021-10-10'),
+(8, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '04:55:38 am', '2021-10-11'),
+(9, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '04:56:14 am', '2021-10-11'),
+(10, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '05:05:40 am', '2021-10-11'),
+(11, '1', 'Pengajuan Baru', 'Pengajuan Baru Dari ', '399', 'Admin', '05:10:45 am', '2021-10-11');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pembatalan`
+-- Table structure for table `tbl_pembatalan`
 --
 
 CREATE TABLE `tbl_pembatalan` (
@@ -648,16 +652,16 @@ CREATE TABLE `tbl_pembatalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_pembatalan`
+-- Dumping data for table `tbl_pembatalan`
 --
 
 INSERT INTO `tbl_pembatalan` (`id_pembatalan`, `id_pengajuan`, `keterangan_pembatalan`) VALUES
-(12, 24, 'salah input');
+(13, 44, 'salah input');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengajuan`
+-- Table structure for table `tbl_pengajuan`
 --
 
 CREATE TABLE `tbl_pengajuan` (
@@ -673,37 +677,46 @@ CREATE TABLE `tbl_pengajuan` (
   `harga_lab` varchar(100) DEFAULT NULL,
   `is_available` int(11) DEFAULT NULL,
   `pengajuan_slug` varchar(100) DEFAULT NULL,
-  `is_new` int(1) DEFAULT NULL
+  `is_new_admin` int(1) DEFAULT NULL,
+  `is_new_member` int(11) DEFAULT NULL,
+  `is_admin` int(11) DEFAULT NULL,
+  `is_member` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_pengajuan`
+-- Dumping data for table `tbl_pengajuan`
 --
 
-INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `nama_pengaju`, `id_user`, `tanggal_pengajuan`, `selesai_pengajuan`, `status_pengajuan`, `deskripsi_pengajuan`, `divisi_pengaju`, `lab`, `harga_lab`, `is_available`, `pengajuan_slug`, `is_new`) VALUES
-(21, 'USER 1', 194, '2021-10-08', NULL, 2, 'Pengajuan Pertama USER 1', '388', NULL, NULL, 1, '0n8NAOXYmGsIKfiyhMTeBJkHZ1aPu2ob9LgVjRprF7Dtq5zw641633675550', 0),
-(22, 'USER 1', 194, '2021-10-08', NULL, 3, 'Pengajuan Kedua USER 1', '388', 6, '200000', 1, 'JV8uTwcIMNyrF9Kz2a3EnBAhXmsCP5dLW7kZG1tjOfSgelxYvb1633675641', NULL),
-(23, 'Jaya', 196, '2021-10-08', NULL, 1, 'Milimeter sekrup', '399', NULL, NULL, 1, 'k8cszo52HBlL9meJwgxRvjnOVU6rbdTFfpZ3iNaCQXDKI1W0AP1633678148', NULL),
-(24, 'Jaya', 196, '2021-10-08', NULL, 2, 'Jasdad', '399', NULL, NULL, 1, 'lz2YO0IZSC5yNrwV7mku3WURJAspdo1KBaPfQDc6ethnjbiT8v1633678236', NULL),
-(25, 'j', 196, '2021-10-08', NULL, 3, 's', '399', 6, '300000', 1, 'Z1JjSpK3yqIsVvxw4hNDLGCtBW08gz7lQPkRdXHcO6ufE2Y9ra1633678266', NULL),
-(26, 'tes', 196, '2021-10-08', NULL, 1, 'tes', '399', NULL, NULL, 1, 'Kb0UFGtVxZ24pqLrD1N3gI6yXewCnPasQkHJhYMclBz87dSjuv1633679057', NULL),
-(27, 'nmm', 196, '2021-10-08', NULL, 1, 'fghjk', '399', NULL, NULL, 1, 'YTAj9rsUfKqnMiQX8mVv2Rc7hopk1uwW6HF0B4ydEGDeOtSlxN1633679092', NULL),
-(28, 'sx', 196, '2021-10-08', NULL, 1, 'xs', '399', NULL, NULL, 1, 'sf02RYdVqjlU36XEOJkMonNat1I8hyBH7iF9wGLZbuTKS4mACg1633679150', NULL),
-(29, 'hasghsdfsfsd', 196, '2021-10-08', NULL, 1, 'dfd', '399', NULL, NULL, 1, '6A0YbiqaBy3hcKpFjvRgfds9V7EJISWo2TQwMG5Zx4Un8DlLtO1633679205', NULL),
-(30, 'Tes', 194, '2021-10-08', NULL, 1, 'as', '388', NULL, NULL, 0, 'HUAFuV3eoI6kGh5rZ8jlJzQN7YXDwxLmRvd1sT0gMy2C4OiBnt1633682231', NULL),
-(31, 'da', 196, '2021-10-08', NULL, 1, 'dasd', '399', NULL, NULL, 1, 'qxz8FIXjC1MD3waVmB0kvLUy9GnNpZu4EWgfTicYtPOQsKSRoe1633682374', NULL),
-(32, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, '0PWImJ5C27GXSeMQnRgVjqiAHFoyrsvUB3ZhLdfblku8Kta6Tc1633683617', NULL),
-(33, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, 'xfIQmAjurRpt1ldL8CvWX6biMkUnTPq9KSFYhD52w7s3HNZVEG1633683636', NULL),
-(34, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 1, 'VuvEDQFadYAgHI7xf4Bslmjzqchobt1JT9wL0OekM8N6yrRZSp1633683690', NULL),
-(35, 'Haidir', 196, '2021-10-10', NULL, 1, 'Kalibrasi Divisi EPP', '399', NULL, NULL, 1, 'ft7HYD41cQuI9CRSwnKksU8XJV3qgPGbjhvMOZLB06NmzEoxTW1633877108', NULL),
-(36, 'Mustofa', 196, '2021-10-10', NULL, 1, 'Pengajuan 2', '399', NULL, NULL, 1, 'Uj9n0uKOi2yHGPYMe71arIvLoEQVhDqNtksXzdJFwWxfSgZTbl1633877177', 0),
-(37, 'Haidir', 196, '2021-10-10', NULL, 3, 'Pengajuan alat divisi epp', '399', 7, '300000', 1, 'rJhMypQ25oH9iIjq8kRguBO3X6aLc4W1CFTGAtSVU0Ydxmzbsf1633878310', 0),
-(38, 'tes', 196, '2021-10-10', NULL, 1, 'tes', '399', NULL, NULL, 1, 'viAfte6WsCOGzmU5g4j9P17Ep3NoMxVBaLJTDQwX0FlrY28dRb1633883789', 0);
+INSERT INTO `tbl_pengajuan` (`id_pengajuan`, `nama_pengaju`, `id_user`, `tanggal_pengajuan`, `selesai_pengajuan`, `status_pengajuan`, `deskripsi_pengajuan`, `divisi_pengaju`, `lab`, `harga_lab`, `is_available`, `pengajuan_slug`, `is_new_admin`, `is_new_member`, `is_admin`, `is_member`) VALUES
+(21, 'USER 1', 194, '2021-10-08', NULL, 2, 'Pengajuan Pertama USER 1', '388', NULL, NULL, 1, '0n8NAOXYmGsIKfiyhMTeBJkHZ1aPu2ob9LgVjRprF7Dtq5zw641633675550', 0, NULL, NULL, NULL),
+(22, 'USER 1', 194, '2021-10-08', NULL, 3, 'Pengajuan Kedua USER 1', '388', 6, '200000', 1, 'JV8uTwcIMNyrF9Kz2a3EnBAhXmsCP5dLW7kZG1tjOfSgelxYvb1633675641', NULL, NULL, NULL, NULL),
+(23, 'Jaya', 196, '2021-10-08', NULL, 1, 'Milimeter sekrup', '399', NULL, NULL, 1, 'k8cszo52HBlL9meJwgxRvjnOVU6rbdTFfpZ3iNaCQXDKI1W0AP1633678148', NULL, NULL, NULL, NULL),
+(24, 'Jaya', 196, '2021-10-08', NULL, 2, 'Jasdad', '399', NULL, NULL, 1, 'lz2YO0IZSC5yNrwV7mku3WURJAspdo1KBaPfQDc6ethnjbiT8v1633678236', NULL, 0, NULL, 0),
+(25, 'j', 196, '2021-10-08', NULL, 3, 's', '399', 6, '300000', 1, 'Z1JjSpK3yqIsVvxw4hNDLGCtBW08gz7lQPkRdXHcO6ufE2Y9ra1633678266', NULL, NULL, NULL, NULL),
+(26, 'tes', 196, '2021-10-08', NULL, 1, 'tes', '399', NULL, NULL, 1, 'Kb0UFGtVxZ24pqLrD1N3gI6yXewCnPasQkHJhYMclBz87dSjuv1633679057', NULL, NULL, NULL, NULL),
+(27, 'nmm', 196, '2021-10-08', NULL, 1, 'fghjk', '399', NULL, NULL, 1, 'YTAj9rsUfKqnMiQX8mVv2Rc7hopk1uwW6HF0B4ydEGDeOtSlxN1633679092', NULL, NULL, NULL, NULL),
+(28, 'sx', 196, '2021-10-08', NULL, 1, 'xs', '399', NULL, NULL, 1, 'sf02RYdVqjlU36XEOJkMonNat1I8hyBH7iF9wGLZbuTKS4mACg1633679150', NULL, NULL, NULL, NULL),
+(29, 'hasghsdfsfsd', 196, '2021-10-08', NULL, 1, 'dfd', '399', NULL, NULL, 1, '6A0YbiqaBy3hcKpFjvRgfds9V7EJISWo2TQwMG5Zx4Un8DlLtO1633679205', NULL, NULL, NULL, NULL),
+(30, 'Tes', 194, '2021-10-08', NULL, 1, 'as', '388', NULL, NULL, 0, 'HUAFuV3eoI6kGh5rZ8jlJzQN7YXDwxLmRvd1sT0gMy2C4OiBnt1633682231', NULL, NULL, NULL, NULL),
+(31, 'da', 196, '2021-10-08', NULL, 1, 'dasd', '399', NULL, NULL, 1, 'qxz8FIXjC1MD3waVmB0kvLUy9GnNpZu4EWgfTicYtPOQsKSRoe1633682374', NULL, NULL, NULL, NULL),
+(32, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, '0PWImJ5C27GXSeMQnRgVjqiAHFoyrsvUB3ZhLdfblku8Kta6Tc1633683617', NULL, NULL, NULL, NULL),
+(33, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 0, 'xfIQmAjurRpt1ldL8CvWX6biMkUnTPq9KSFYhD52w7s3HNZVEG1633683636', NULL, NULL, NULL, NULL),
+(34, 'Haidir', 196, '2021-10-08', NULL, 1, 'Pengajuan', '399', NULL, NULL, 1, 'VuvEDQFadYAgHI7xf4Bslmjzqchobt1JT9wL0OekM8N6yrRZSp1633683690', NULL, NULL, NULL, NULL),
+(35, 'Haidir', 196, '2021-10-10', NULL, 1, 'Kalibrasi Divisi EPP', '399', NULL, NULL, 1, 'ft7HYD41cQuI9CRSwnKksU8XJV3qgPGbjhvMOZLB06NmzEoxTW1633877108', NULL, NULL, NULL, NULL),
+(36, 'Mustofa', 196, '2021-10-10', NULL, 1, 'Pengajuan 2', '399', NULL, NULL, 1, 'Uj9n0uKOi2yHGPYMe71arIvLoEQVhDqNtksXzdJFwWxfSgZTbl1633877177', 0, NULL, NULL, NULL),
+(37, 'Haidir', 196, '2021-10-10', NULL, 3, 'Pengajuan alat divisi epp', '399', 7, '300000', 1, 'rJhMypQ25oH9iIjq8kRguBO3X6aLc4W1CFTGAtSVU0Ydxmzbsf1633878310', 0, NULL, NULL, NULL),
+(38, 'tes', 196, '2021-10-10', NULL, 1, 'tes', '399', NULL, NULL, 1, 'viAfte6WsCOGzmU5g4j9P17Ep3NoMxVBaLJTDQwX0FlrY28dRb1633883789', 2, NULL, NULL, NULL),
+(39, 'Haidir', 196, '2021-10-11', NULL, 1, 'TES', '399', NULL, NULL, 1, 'usENPwgoMd30VFn9Zpacl7krQxtqYU5mWe82CKbGfyBIJ146zX1633920934', 1, NULL, 1, 1),
+(40, 'HAIDIR', 196, '2021-10-11', NULL, 1, '2', '399', NULL, NULL, 1, '8IABUO0yzgWEuMl2JCDqVRQe5Zb4LmHSKaoNnGhp6jc9XdYx3k1633920971', 0, NULL, 0, 0),
+(41, 'Haidir', 196, '2021-10-11', NULL, 1, 'tes', '399', NULL, NULL, 1, 'kfea7nEjyHxopAZgucCqTiwPmFIWX5J90sQVDRdh6KbNMtvl8L1633921537', 1, NULL, 0, 0),
+(42, 'w', 196, '2021-10-11', NULL, 1, 'a', '399', NULL, NULL, 1, 'Vk5tAuYobP8fpnJG1rcmQv3SWMXDyNT9U6ZBjx4wIqCLHKz7R01633921841', 0, 0, 0, 0),
+(43, 'user 3', 196, '2021-10-11', NULL, 1, 'user 3', '399', 5, '100000', 1, '8b0MgApdGaCncLqxv5lrKifP1H3JOW7UoReETV2SmZ6Qh9XskI1633922491', 0, 0, 0, 0),
+(44, 'user 3', 196, '2021-10-11', NULL, 3, '11', '399', 5, '200000', 1, '8Vrl3sbAEBGe4vSCWwagXj9Yp012LZTutfq7yDFMcRHxni5zdI1633922635', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengajuan_alat`
+-- Table structure for table `tbl_pengajuan_alat`
 --
 
 CREATE TABLE `tbl_pengajuan_alat` (
@@ -713,7 +726,7 @@ CREATE TABLE `tbl_pengajuan_alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_pengajuan_alat`
+-- Dumping data for table `tbl_pengajuan_alat`
 --
 
 INSERT INTO `tbl_pengajuan_alat` (`id_pengajuan_alat`, `id_pengajuan`, `id_alat`) VALUES
@@ -748,12 +761,20 @@ INSERT INTO `tbl_pengajuan_alat` (`id_pengajuan_alat`, `id_pengajuan`, `id_alat`
 (71, 37, 10224),
 (72, 37, 9773),
 (73, 37, 9845),
-(74, 38, 4384);
+(74, 38, 4384),
+(75, 39, 10224),
+(76, 39, 4383),
+(77, 40, 5723),
+(78, 41, 4386),
+(79, 42, 4386),
+(80, 43, 9962),
+(81, 43, 9963),
+(82, 44, 9756);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengajuan_lab`
+-- Table structure for table `tbl_pengajuan_lab`
 --
 
 CREATE TABLE `tbl_pengajuan_lab` (
@@ -764,7 +785,7 @@ CREATE TABLE `tbl_pengajuan_lab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_pengajuan_lab`
+-- Dumping data for table `tbl_pengajuan_lab`
 --
 
 INSERT INTO `tbl_pengajuan_lab` (`id_pengajuan_lab`, `id_pengajuan`, `id_lab`, `harga`) VALUES
@@ -774,12 +795,29 @@ INSERT INTO `tbl_pengajuan_lab` (`id_pengajuan_lab`, `id_pengajuan`, `id_lab`, `
 (13, 25, 5, '100000'),
 (14, 25, 6, '300000'),
 (15, 37, 5, '100000'),
-(16, 37, 7, '300000');
+(16, 37, 7, '300000'),
+(17, 38, 6, '200000'),
+(18, 38, 6, '200000'),
+(19, 38, 6, '200000'),
+(20, 38, 6, '200000'),
+(21, 38, 6, '12'),
+(22, 38, 5, '23'),
+(23, 38, 5, '2'),
+(24, 38, 5, '3'),
+(25, 38, 5, '343445'),
+(26, 38, 5, '1'),
+(27, 38, 5, '12'),
+(28, 44, 7, '3'),
+(29, 44, 7, '3'),
+(30, 44, 5, '3'),
+(31, 44, 5, '200000'),
+(32, 44, 6, '12'),
+(33, 43, 5, '100000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_riwayat_pengajuan`
+-- Table structure for table `tbl_riwayat_pengajuan`
 --
 
 CREATE TABLE `tbl_riwayat_pengajuan` (
@@ -788,23 +826,44 @@ CREATE TABLE `tbl_riwayat_pengajuan` (
   `date_riwayat_pengajuan` varchar(100) DEFAULT NULL,
   `time_riwayat_pengajuan` varchar(100) DEFAULT NULL,
   `pesan_riwayat_pengajuan` varchar(500) DEFAULT NULL,
-  `dari` varchar(10) DEFAULT NULL,
-  `untuk` varchar(10) DEFAULT NULL
+  `admin` varchar(10) DEFAULT NULL,
+  `member` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_riwayat_pengajuan`
+-- Dumping data for table `tbl_riwayat_pengajuan`
 --
 
-INSERT INTO `tbl_riwayat_pengajuan` (`id_riwayat_pengajuan`, `id_pengajuan`, `date_riwayat_pengajuan`, `time_riwayat_pengajuan`, `pesan_riwayat_pengajuan`, `dari`, `untuk`) VALUES
+INSERT INTO `tbl_riwayat_pengajuan` (`id_riwayat_pengajuan`, `id_pengajuan`, `date_riwayat_pengajuan`, `time_riwayat_pengajuan`, `pesan_riwayat_pengajuan`, `admin`, `member`) VALUES
 (1, 38, '2021-10-10', '11:58:10', 'Pembuatan Pengajuan Baru', 'Member', 'Admin'),
 (2, 38, '2021-10-10', '11:58:10', 'Perubahan Status SEDANG dI Review', NULL, NULL),
-(3, 37, '2021-10-10', '11:58:10', 'Upload Dokumen Baru \"Invoice\"', NULL, NULL);
+(3, 37, '2021-10-10', '11:58:10', 'Upload Dokumen Baru \"Invoice\"', NULL, NULL),
+(4, 38, '2021-10-11', '1633918037', 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(5, 38, '2021-10-11', '1633918077', 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(6, 38, '2021-10-11', NULL, 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(7, 38, '2021-10-11', NULL, 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(8, 38, '2021-10-11', NULL, 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(9, 38, '2021-10-11', '04:13:48', 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(10, 38, '2021-10-11', '09:14:47', 'Menambhkan Laboratorium Kalibrasi', NULL, NULL),
+(11, 38, '2021-10-11', '09:18:01', 'Menambhkan Laboratorium Kalibrasi', 'Admin', 'Member'),
+(12, 43, '2021-10-11', '05:21:37', 'Dari Divisi399Membuat Pengajuan Baru', NULL, NULL),
+(13, 44, '2021-10-11', '05:23:58', 'user 3 Dari Divisi Production Operation Membuat Pengajuan Baru', NULL, NULL),
+(14, 44, '2021-10-11', '05:27:22', 'Pengajuan telah dibatalkan dengan alasan salah input', NULL, NULL),
+(15, 44, '2021-10-11', '05:33:29', 'Pengajuan telah selesai dengan tanggal kalibrasi alat 2021-10-11', NULL, NULL),
+(16, 44, '2021-10-11', '10:35:31', 'Admin Menambahkan Pilihan Lab Kalibrasi', NULL, NULL),
+(17, 44, '2021-10-11', '10:40:16', 'Admin Menambahkan Pilihan Lab Kalibrasi', NULL, NULL),
+(18, 44, '2021-10-11', '12:51:15', 'Admin Menambahkan Pilihan Lab Kalibrasi5 - 3', NULL, NULL),
+(19, 44, '2021-10-11', '12:51:56', 'Admin Menambahkan Pilihan Lab Kalibrasi5 - 200000', NULL, NULL),
+(20, 44, '2021-10-11', '12:59:17', 'Dokumen Baru telah ditambahkan dengan nama Administrasi Umum', NULL, NULL),
+(21, 44, '2021-10-11', '12:59:44', 'Admin Menambahkan Pilihan Lab Kalibrasi6 - 12', NULL, NULL),
+(22, 44, '2021-10-11', '08:03:28', 'Pengaju sudah memilih Lab , lab yang dipilih adalah :   - 200000', NULL, NULL),
+(23, 43, '2021-10-11', '13:06:18', 'Admin Menambahkan Pilihan Lab Kalibrasi5 - 100000', NULL, NULL),
+(24, 43, '2021-10-11', '08:07:06', 'Pengaju sudah memilih Lab , lab yang dipilih adalah :  Lab 1 - 100000', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_status`
+-- Table structure for table `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
@@ -814,7 +873,7 @@ CREATE TABLE `tbl_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_status`
+-- Dumping data for table `tbl_status`
 --
 
 INSERT INTO `tbl_status` (`id_status`, `nama_status`, `role_status`) VALUES
@@ -829,7 +888,7 @@ INSERT INTO `tbl_status` (`id_status`, `nama_status`, `role_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -847,7 +906,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_fullname`, `user_email`, `user_phone`, `user_divition`, `user_account`, `user_slug`, `user_status`, `isAccount`) VALUES
@@ -861,149 +920,149 @@ INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_fullname`, `u
 --
 
 --
--- Indeks untuk tabel `tbl_alat`
+-- Indexes for table `tbl_alat`
 --
 ALTER TABLE `tbl_alat`
   ADD PRIMARY KEY (`id_alat`);
 
 --
--- Indeks untuk tabel `tbl_divisi`
+-- Indexes for table `tbl_divisi`
 --
 ALTER TABLE `tbl_divisi`
   ADD PRIMARY KEY (`id_divisi`);
 
 --
--- Indeks untuk tabel `tbl_dokumen`
+-- Indexes for table `tbl_dokumen`
 --
 ALTER TABLE `tbl_dokumen`
   ADD PRIMARY KEY (`id_dokumen`);
 
 --
--- Indeks untuk tabel `tbl_lab`
+-- Indexes for table `tbl_lab`
 --
 ALTER TABLE `tbl_lab`
   ADD PRIMARY KEY (`id_lab`);
 
 --
--- Indeks untuk tabel `tbl_notif`
+-- Indexes for table `tbl_notif`
 --
 ALTER TABLE `tbl_notif`
   ADD PRIMARY KEY (`id_notif`);
 
 --
--- Indeks untuk tabel `tbl_pembatalan`
+-- Indexes for table `tbl_pembatalan`
 --
 ALTER TABLE `tbl_pembatalan`
   ADD PRIMARY KEY (`id_pembatalan`);
 
 --
--- Indeks untuk tabel `tbl_pengajuan`
+-- Indexes for table `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `tbl_pengajuan_alat`
+-- Indexes for table `tbl_pengajuan_alat`
 --
 ALTER TABLE `tbl_pengajuan_alat`
   ADD PRIMARY KEY (`id_pengajuan_alat`);
 
 --
--- Indeks untuk tabel `tbl_pengajuan_lab`
+-- Indexes for table `tbl_pengajuan_lab`
 --
 ALTER TABLE `tbl_pengajuan_lab`
   ADD PRIMARY KEY (`id_pengajuan_lab`);
 
 --
--- Indeks untuk tabel `tbl_riwayat_pengajuan`
+-- Indexes for table `tbl_riwayat_pengajuan`
 --
 ALTER TABLE `tbl_riwayat_pengajuan`
   ADD PRIMARY KEY (`id_riwayat_pengajuan`);
 
 --
--- Indeks untuk tabel `tbl_status`
+-- Indexes for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_alat`
+-- AUTO_INCREMENT for table `tbl_alat`
 --
 ALTER TABLE `tbl_alat`
   MODIFY `id_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11384;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_divisi`
+-- AUTO_INCREMENT for table `tbl_divisi`
 --
 ALTER TABLE `tbl_divisi`
   MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=411;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_dokumen`
+-- AUTO_INCREMENT for table `tbl_dokumen`
 --
 ALTER TABLE `tbl_dokumen`
-  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_lab`
+-- AUTO_INCREMENT for table `tbl_lab`
 --
 ALTER TABLE `tbl_lab`
   MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_notif`
+-- AUTO_INCREMENT for table `tbl_notif`
 --
 ALTER TABLE `tbl_notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pembatalan`
+-- AUTO_INCREMENT for table `tbl_pembatalan`
 --
 ALTER TABLE `tbl_pembatalan`
-  MODIFY `id_pembatalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pembatalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pengajuan`
+-- AUTO_INCREMENT for table `tbl_pengajuan`
 --
 ALTER TABLE `tbl_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pengajuan_alat`
+-- AUTO_INCREMENT for table `tbl_pengajuan_alat`
 --
 ALTER TABLE `tbl_pengajuan_alat`
-  MODIFY `id_pengajuan_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_pengajuan_alat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_pengajuan_lab`
+-- AUTO_INCREMENT for table `tbl_pengajuan_lab`
 --
 ALTER TABLE `tbl_pengajuan_lab`
-  MODIFY `id_pengajuan_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pengajuan_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_riwayat_pengajuan`
+-- AUTO_INCREMENT for table `tbl_riwayat_pengajuan`
 --
 ALTER TABLE `tbl_riwayat_pengajuan`
-  MODIFY `id_riwayat_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_riwayat_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_status`
+-- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;

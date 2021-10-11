@@ -35,9 +35,15 @@ class Pengajuan extends MY_Controller
     }
     public function detail_pengajuan($slug)
     {
+        if ($this->fungsi->user_login()->user_status == 'Member') {
+            $data['is_member'] = 0;
+            $data['is_new_member'] = 0;
+        } else {
+            $data['is_admin'] = 0;
+            $data['is_new_admin'] = 0;
+        }
         $slug_ = $this->M_pengajuan->getPengajuanBySlug($slug);
         $id =  $slug_[0]['id_pengajuan'];
-        $data['is_new'] = '0';
         $data['id_pengajuan'] = $id;
         $this->M_pengajuan->updatepengajuan($data);
         $params['pengajuan'] = $this->M_pengajuan->getPengajuanByID($id);
@@ -61,10 +67,19 @@ class Pengajuan extends MY_Controller
     }
     public function lab_pengajuan()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $params['id_pengajuan'] =  $this->input->post("id");
         $params['id_lab'] =  $this->input->post("lab");
         $params['harga'] =  $this->input->post("harga");
         $this->M_pengajuan->inputlabpengajuan($params);
+        $data_['id_pengajuan'] = $this->input->post("id");
+        $data_['pesan_riwayat_pengajuan'] = "Admin Menambahkan Pilihan Lab Kalibrasi" . $this->input->post("lab") . ' - ' . $this->input->post("harga");
+        $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+        $data_['time_riwayat_pengajuan'] = date('H:i:s');
+        $this->M_pengajuan->inputriwayat($data_);
+        $data['is_member'] = 1;
+        $data['id_pengajuan'] = $this->input->post("id");
+        $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);
@@ -106,16 +121,16 @@ class Pengajuan extends MY_Controller
         }
         $data['id_pengajuan'] = $id[0]['id_pengajuan'];
         $data['is_available'] = '1';
-        $data['is_new'] = '1';
+        $data['is_new_admin'] = '1';
+        $data['is_new_member'] = '1';
+        $data['is_admin'] = '0';
+        $data['is_member'] = '0';
         $this->M_pengajuan->updatepengajuan($data);
-        $data_['notif_status'] = '1';
-        $data_['notif_messages'] = 'Pengajuan Baru Dari ' . $this->input->post("name");
-        $data_['notif_from'] = $this->fungsi->user_login()->user_divition;
-        $data_['notif_for'] = 'Admin';
-        $data_['notif_title'] = 'Pengajuan Baru';
-        $data_['notif_date'] = date("Y-m-d");
-        $data_['notif_time'] = date("h:i:s a");
-        $this->M_pengajuan->inputnotif($data_);
+        $data_['id_pengajuan'] = $id[0]['id_pengajuan'];
+        $data_['pesan_riwayat_pengajuan'] = $id[0]['nama_pengaju'] . " Dari Divisi " . $this->fungsi->user_login()->nama_divisi . " Membuat Pengajuan Baru";
+        $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+        $data_['time_riwayat_pengajuan'] = date('H:i:s');
+        $this->M_pengajuan->inputriwayat($data_);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
         return redirect(base_url('data-pengajuan'));
@@ -123,10 +138,19 @@ class Pengajuan extends MY_Controller
     public function pengajuan_lab()
     {
         $lab = $this->input->post("lab");
+        $labo = $this->M_pengajuan->getLabByID($lab);
         $harga = explode("-", $lab);
         $data['id_pengajuan'] =  $this->input->post("id");
         $data['lab'] = $harga[0];
         $data['harga_lab'] = $harga[1];
+        $this->M_pengajuan->updatepengajuan($data);
+        $data_['id_pengajuan'] = $this->input->post("id");
+        $data_['pesan_riwayat_pengajuan'] = "Pengaju sudah memilih Lab , lab yang dipilih adalah :  " . $labo[0]['nama_lab'] . ' - ' . $harga[1];
+        $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+        $data_['time_riwayat_pengajuan'] = date('H:i:s');
+        $this->M_pengajuan->inputriwayat($data_);
+        $data['is_admin'] = 1;
+        $data['id_pengajuan'] = $this->input->post("id");
         $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
@@ -138,6 +162,7 @@ class Pengajuan extends MY_Controller
         $status = $this->M_pengajuan->getStatusAkhir();
         $data['status_pengajuan'] = $status[0]['id_status'];
         $data['id_pengajuan'] =  $this->input->post("id");
+        $data['is_member'] = 1;
         $this->M_pengajuan->updatepengajuan($data);
         $alat = $this->M_pengajuan->getAlatPengajuan($id);
         $jumlah_dipilih = count($alat);
@@ -146,6 +171,11 @@ class Pengajuan extends MY_Controller
             $params['waktu_kalibrasi_alat'] = $this->input->post("date");
             $this->M_pengajuan->update_alat($params);
         }
+        $data_['id_pengajuan'] = $this->input->post("id");
+        $data_['pesan_riwayat_pengajuan'] = "Pengajuan telah selesai dengan tanggal kalibrasi alat " . $this->input->post("date");
+        $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+        $data_['time_riwayat_pengajuan'] = date('H:i:s');
+        $this->M_pengajuan->inputriwayat($data_);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);
@@ -165,6 +195,11 @@ class Pengajuan extends MY_Controller
             $params['id_pengajuan'] =  $this->input->post("id");
             $params['status_pengajuan'] = $status[0]['id_status'];
             $this->M_pengajuan->updatepengajuan($params);
+            $data_['id_pengajuan'] = $this->input->post("id");
+            $data_['pesan_riwayat_pengajuan'] = "Pengajuan telah dibatalkan dengan alasan " . $this->input->post("keterangan");
+            $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+            $data_['time_riwayat_pengajuan'] = date('H:i:s');
+            $this->M_pengajuan->inputriwayat($data_);
             $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Sukses - </strong> Berhasil Membatalkan Pengajuan!</div>');
         }
@@ -184,6 +219,14 @@ class Pengajuan extends MY_Controller
         $params['id_pengajuan'] = $this->input->post('id');
         $params['status_pengajuan'] = $this->input->post('status');
         $this->M_pengajuan->updatepengajuan($params);
+        $data_['id_pengajuan'] = $this->input->post("id");
+        $data_['pesan_riwayat_pengajuan'] = "Status Pengajuan Berubah Menjadi " . $this->input->post("status");
+        $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+        $data_['time_riwayat_pengajuan'] = date('H:i:s');
+        $this->M_pengajuan->inputriwayat($data_);
+        $data['is_member'] = 1;
+        $data['id_pengajuan'] = $this->input->post("id");
+        $this->M_pengajuan->updatepengajuan($data);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Merubah Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);
@@ -214,6 +257,14 @@ class Pengajuan extends MY_Controller
             $this->M_pengajuan->inputFile($params);
             $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Sukses - </strong> Berhasil Upload File!</div>');
+            $data_['id_pengajuan'] = $this->input->post("id");
+            $data_['pesan_riwayat_pengajuan'] = "Dokumen Baru telah ditambahkan dengan nama " . $this->input->post("name");
+            $data_['date_riwayat_pengajuan'] = date('Y-m-d');
+            $data_['time_riwayat_pengajuan'] = date('H:i:s');
+            $this->M_pengajuan->inputriwayat($data_);
+            $data['is_member'] = 1;
+            $data['id_pengajuan'] = $this->input->post("id");
+            $this->M_pengajuan->updatepengajuan($data);
         } else {
             $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Gagal - </strong> Periksa kembali ukuran atau extensi file!</div>');
@@ -225,7 +276,7 @@ class Pengajuan extends MY_Controller
         $slug_ = $this->M_pengajuan->getPengajuanBySlug($slug);
         $id =  $slug_[0]['id_pengajuan'];
         $params['aktifitas'] = $this->M_pengajuan->getAktifitas($id);
-        $params['navbar'] = 'Pengajuan';
+        $params['navbar'] = 'Data Pengajuan';
         $params['title'] = 'Riwayat Aktifitas Sistem Kalibrasi';
         $this->template->load('template/template', 'aktifitas', $params);
     }

@@ -85,10 +85,12 @@ class M_pengajuan extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+
     public function getAktifitas($id)
     {
         $this->db->select('*')
             ->from('tbl_riwayat_pengajuan')
+            ->order_by('id_riwayat_pengajuan', 'desc')
             ->where('tbl_riwayat_pengajuan.id_pengajuan', $id)
             ->join('tbl_pengajuan', 'tbl_pengajuan.id_pengajuan = tbl_riwayat_pengajuan.id_pengajuan');
         $query = $this->db->get()->result_array();
@@ -99,6 +101,14 @@ class M_pengajuan extends CI_Model
         $this->db->select('*')
             ->from('tbl_status')
             ->where('role_status', 'Awal');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getLabByID($lab)
+    {
+        $this->db->select('*')
+            ->from('tbl_lab')
+            ->where('id_lab', $lab);
         $query = $this->db->get()->result_array();
         return $query;
     }
@@ -120,7 +130,7 @@ class M_pengajuan extends CI_Model
     }
     public function getIDPengajuan()
     {
-        $this->db->select('id_pengajuan')
+        $this->db->select('id_pengajuan , nama_pengaju')
             ->from('tbl_pengajuan')
             ->order_by('id_pengajuan', 'desc')
             ->limit(1);
