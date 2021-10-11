@@ -21,15 +21,15 @@
         foreach ($pengajuan as $data) {
         ?>
             <div class="col-12 mb-5 ">
-                <a class="btn btn-dark btn-sm " href="<?= base_url('riwayat-aktifitas-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>"><i class="fa fa-info"></i> Lihat Riwayat Aktifitas Pengajuan</a>
+                <a class="btn btn-dark btn-sm mb-1" href="<?= base_url('riwayat-aktifitas-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>"><i class="fa fa-info"></i> Lihat Riwayat Aktifitas Pengajuan</a>
                 <?php
                 if ($this->fungsi->user_login()->user_status == 'Admin') {
                 ?>
-                    <a class="btn btn-danger btn-sm " href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
-                    <a class="btn btn-primary btn-sm " href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
-                    <a class="btn btn-success btn-sm " href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
+                    <a class="btn btn-primary btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
+                    <a class="btn btn-success btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
                 <?php  }
                 ?>
+                <a class="btn btn-danger btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
             </div>
             <div class="row">
                 <div class="col-md-3">
@@ -138,7 +138,7 @@
                                     if ($this->fungsi->user_login()->user_status == 'Admin') {
                                     ?>
                                         <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-add-lab<?= $data['id_pengajuan'] ?>"><i class="fas fa-plus"></i> Lab</a>
-                                    <?php  } else  if ($data['nama_lab'] == null) {
+                                    <?php  } else {
                                     ?>
                                         <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>"><i class="fab fa-get-pocket"></i> Pilih Lab</a>
                                     <?php } ?>
@@ -156,8 +156,20 @@
                                 foreach ($pengajuanlab as $datapengajuanlab) {
                                 ?>
                                     <li>
-                                        <i class="fas fa-circle text-warning font-10 mr-2"></i>
-                                        <span class="text-muted"><?= $datapengajuanlab['nama_lab'] ?> - <?= "Rp." . number_format($datapengajuanlab['harga'], 2, ',', '.') ?></small></span>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <i class="fas fa-circle text-warning font-10 mr-2"></i>
+                                                <span class="text-muted"><?= $datapengajuanlab['nama_lab'] ?> - <?= "Rp." . number_format($datapengajuanlab['harga'], 2, ',', '.') ?></small></span>
+                                            </div>
+                                            <?php
+                                            if ($this->fungsi->user_login()->user_status == 'Admin') {
+                                            ?>
+                                                <div class="col-4">
+                                                    <a href="#" type="button" class="btn btn-sm float-right" onClick="confirm_modal('<?= base_url('delete-pengajuan-lab') ?>/<?php echo  $datapengajuanlab['id_pengajuan_lab']; ?>');"><i class="fa fa-trash" style="color: red;"></i></a>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+
                                     </li>
                                 <?php } ?>
                                 <hr>
@@ -200,11 +212,18 @@
                                     foreach ($dokumen as $dataDokumen) {
                                         if ($dataDokumen['id_pengajuan'] == $data['id_pengajuan']) {
                                     ?>
-                                            <div class="col-md-10">
-                                                <h6 class="text-dark font-weight-medium mb-2"> <?= $dataDokumen['nama_dokumen'] ?></h6>
+                                            <div class="col-md-8 col-sm-6 col-6">
+                                                <a target="blank" href="<?= base_url() . 'assets/dokumen/' . $dataDokumen['file_dokumen']; ?>">
+                                                    <h6 class="text-dark font-weight-medium mb-2"> <?= $dataDokumen['nama_dokumen'] ?></h6>
+                                                </a>
                                             </div>
-                                            <div class="col-md-2">
-                                                <a target="blank" href="<?= base_url() . 'assets/dokumen/' . $dataDokumen['file_dokumen']; ?>" type="button" class="btn btn-sm " data-bgcolor="#00b489" data-color="#ffffff"><i class="fa fa-download"></i></a>
+                                            <div class="col-md-4 col-sm-6 col-6">
+                                                <?php
+                                                if ($this->fungsi->user_login()->user_status == 'Admin') {
+                                                ?>
+                                                    <a href="#" type="button" class="btn btn-sm float-right" onClick="confirm_modal('<?= base_url('delete-dokumen') ?>/<?php echo  $dataDokumen['id_dokumen']; ?>');"><i class="fa fa-trash" style="color: red;"></i></a>
+                                                <?php } ?>
+                                                <a target="blank" href="<?= base_url() . 'assets/dokumen/' . $dataDokumen['file_dokumen']; ?>" type="button" class="btn btn-sm float-right" data-bgcolor="#00b489" data-color="#ffffff"><i class="fa fa-download" style="color: green;"></i></a>
                                             </div>
                                     <?php
                                         }

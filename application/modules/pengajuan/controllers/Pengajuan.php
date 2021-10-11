@@ -67,13 +67,15 @@ class Pengajuan extends MY_Controller
     }
     public function lab_pengajuan()
     {
+        $lab = $this->input->post("lab");
+        $labo = $this->M_pengajuan->getLabByID($lab);
         date_default_timezone_set('Asia/Jakarta');
         $params['id_pengajuan'] =  $this->input->post("id");
         $params['id_lab'] =  $this->input->post("lab");
         $params['harga'] =  $this->input->post("harga");
         $this->M_pengajuan->inputlabpengajuan($params);
         $data_['id_pengajuan'] = $this->input->post("id");
-        $data_['pesan_riwayat_pengajuan'] = "Admin Menambahkan Pilihan Lab Kalibrasi" . $this->input->post("lab") . ' - ' . $this->input->post("harga");
+        $data_['pesan_riwayat_pengajuan'] = "Admin Menambahkan Pilihan Lab Kalibrasi " . $labo[0]['nama_lab'] . ' - ' . $this->input->post("harga");
         $data_['date_riwayat_pengajuan'] = date('Y-m-d');
         $data_['time_riwayat_pengajuan'] = date('H:i:s');
         $this->M_pengajuan->inputriwayat($data_);
@@ -196,7 +198,12 @@ class Pengajuan extends MY_Controller
             $params['status_pengajuan'] = $status[0]['id_status'];
             $this->M_pengajuan->updatepengajuan($params);
             $data_['id_pengajuan'] = $this->input->post("id");
-            $data_['pesan_riwayat_pengajuan'] = "Pengajuan telah dibatalkan dengan alasan " . $this->input->post("keterangan");
+            if ($this->fungsi->user_login()->user_status == 'Member') {
+
+                $data_['pesan_riwayat_pengajuan'] = "Pengajuan telah dibatalkan oleh pengaju dengan alasan " . $this->input->post("keterangan");
+            } else {
+                $data_['pesan_riwayat_pengajuan'] = "Pengajuan telah dibatalkan oleh admin dengan alasan " . $this->input->post("keterangan");
+            }
             $data_['date_riwayat_pengajuan'] = date('Y-m-d');
             $data_['time_riwayat_pengajuan'] = date('H:i:s');
             $this->M_pengajuan->inputriwayat($data_);
@@ -218,9 +225,11 @@ class Pengajuan extends MY_Controller
     {
         $params['id_pengajuan'] = $this->input->post('id');
         $params['status_pengajuan'] = $this->input->post('status');
+        $status = $this->input->post('status');
         $this->M_pengajuan->updatepengajuan($params);
+        $stat = $this->M_pengajuan->getStatusByID($status);
         $data_['id_pengajuan'] = $this->input->post("id");
-        $data_['pesan_riwayat_pengajuan'] = "Status Pengajuan Berubah Menjadi " . $this->input->post("status");
+        $data_['pesan_riwayat_pengajuan'] = "Status Pengajuan Berubah Menjadi " . $stat[0]['nama_status'];
         $data_['date_riwayat_pengajuan'] = date('Y-m-d');
         $data_['time_riwayat_pengajuan'] = date('H:i:s');
         $this->M_pengajuan->inputriwayat($data_);
@@ -234,6 +243,23 @@ class Pengajuan extends MY_Controller
     public function delete_pengajuan($params)
     {
         $this->M_pengajuan->deletepengajuan($params);
+        $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sukses - </strong> Berhasil Menghapus Data!</div>');
+        return redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function delete_pengajuan_lab($params)
+    {
+        $this->M_pengajuan->deletepengajuanlab($params);
+        $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Sukses - </strong> Berhasil Menghapus Data!</div>');
+        return redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function delete_dokumen($id)
+    {
+        $file = $this->M_pengajuan->getFile($id);
+        $file_ = $file['0']['file_dokumen'];
+        unlink(FCPATH . 'assets/dokumen/' . $file_);
+        $this->M_pengajuan->deletedokumen($id);
         $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menghapus Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);

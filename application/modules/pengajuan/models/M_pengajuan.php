@@ -37,6 +37,16 @@ class M_pengajuan extends CI_Model
         $this->db->where('id_pengajuan', $params);
         $this->db->delete('tbl_pengajuan');
     }
+    public function deletepengajuanlab($params)
+    {
+        $this->db->where('id_pengajuan_lab', $params);
+        $this->db->delete('tbl_pengajuan_lab');
+    }
+    public function deletedokumen($id)
+    {
+        $this->db->where('id_dokumen', $id);
+        $this->db->delete('tbl_dokumen');
+    }
     public function updatepengajuan($data)
     {
         $this->db->where('id_pengajuan', $data['id_pengajuan']);
@@ -53,7 +63,7 @@ class M_pengajuan extends CI_Model
         $this->db->select('*')
             ->from('tbl_pengajuan')
             ->where('is_available', 1)
-            ->order_by('id_pengajuan', 'desc')
+            ->order_by('tbl_pengajuan.id_pengajuan', 'desc')
             ->join('user', 'user.id_user = tbl_pengajuan.id_user', 'left')
             ->join('tbl_status', 'tbl_pengajuan.status_pengajuan = tbl_status.id_status', 'left')
             ->join('tbl_lab', 'tbl_pengajuan.lab = tbl_lab.id_lab', 'left')
@@ -104,6 +114,14 @@ class M_pengajuan extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getFile($id)
+    {
+        $this->db->select('*')
+            ->from('tbl_dokumen')
+            ->where('id_dokumen', $id);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getLabByID($lab)
     {
         $this->db->select('*')
@@ -117,6 +135,14 @@ class M_pengajuan extends CI_Model
         $this->db->select('*')
             ->from('tbl_status')
             ->where('role_status', 'Akhir');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getStatusByID($id)
+    {
+        $this->db->select('*')
+            ->from('tbl_status')
+            ->where('id_status', $id);
         $query = $this->db->get()->result_array();
         return $query;
     }

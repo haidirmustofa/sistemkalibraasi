@@ -29,7 +29,7 @@
                                 </a>
                             </div>
                             <div class="ml-3 mt-2">
-                                <h5 class="text-dark font-weight-medium mb-2"><?= $data['pesan_riwayat_pengajuan'] ?></h5>
+                                <h6 class="text-dark font-weight-medium mb-2"><?= $data['pesan_riwayat_pengajuan'] ?></h6>
                                 <span class="font-weight-light font-14 text-muted"><?= $data['date_riwayat_pengajuan'] ?> - <?= $data['time_riwayat_pengajuan'] ?></span>
                             </div>
                         </div>

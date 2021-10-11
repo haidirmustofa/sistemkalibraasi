@@ -36,10 +36,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 0;
+                                    $no = 1;
                                     foreach ($pengajuan as $data) {
                                     ?>
                                         <tr>
+                                            <td><?= $no ?></td>
                                             <td>
                                                 <div class="btn-group dropright">
                                                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,7 +103,8 @@
                                             <?php include('modal_upload.php'); ?>
                                             <?php include('modal_lab.php'); ?>
                                         </tr>
-                                    <?php } ?>
+                                    <?php $no++;
+                                    } ?>
                             </table>
                         </div>
                     </div>
