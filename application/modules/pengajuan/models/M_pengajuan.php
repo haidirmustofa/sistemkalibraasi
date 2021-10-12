@@ -170,11 +170,11 @@ class M_pengajuan extends CI_Model
             ->from('tbl_pengajuan')
             ->where('tbl_pengajuan.divisi_pengaju', $id)
             ->where('is_available', 1)
-            ->order_by('id_pengajuan', 'desc')
             ->join('user', 'user.id_user = tbl_pengajuan.id_user', 'left')
             ->join('tbl_status', 'tbl_pengajuan.status_pengajuan = tbl_status.id_status', 'left')
             ->join('tbl_lab', 'tbl_pengajuan.lab = tbl_lab.id_lab', 'left')
-            ->join('tbl_divisi', 'tbl_pengajuan.divisi_pengaju = tbl_divisi.id_divisi', 'left');
+            ->join('tbl_divisi', 'tbl_pengajuan.divisi_pengaju = tbl_divisi.id_divisi', 'left')
+            ->order_by('id_pengajuan', 'desc');
         $query = $this->db->get()->result_array();
         return $query;
     }

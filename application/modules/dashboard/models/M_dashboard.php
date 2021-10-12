@@ -15,6 +15,15 @@ class M_dashboard extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getPengajuanByDivisi()
+    {
+        $id = $this->fungsi->user_login()->user_divition;
+        $this->db->select('*, COUNT(id_pengajuan) as total')
+            ->where('divisi_pengaju', $id)
+            ->from('tbl_pengajuan');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getCountPemberitahuanAdmin()
     {
         $this->db->select('*, COUNT(id_notif) as total')

@@ -30,7 +30,7 @@ class Dashboard extends MY_Controller
         } else {
             $divisi = $this->fungsi->user_login()->user_divition;
             $data['user'] = $this->M_dashboard->getUser();
-            $data['pengajuan'] = $this->M_dashboard->getPengajuan();
+            $data['pengajuan'] = $this->M_dashboard->getPengajuanByDivisi();
             $data['alat'] = $this->M_dashboard->getAlatDivisi($divisi);
             $data['pemberitahuan'] = $this->M_dashboard->getCountPemberitahuanMember();
             $params['totaluser'] = $data['user'][0]['total'];

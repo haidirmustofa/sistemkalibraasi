@@ -76,7 +76,7 @@
                         <a type="button" class="btn btn-info mb-5" href="#" data-toggle="modal" data-target="#konfirmasi">Update Data</a>
                         <h4 class="card-title">Data Alat Kalibrasi</h4>
                         <div class="table-responsive">
-                            <table id="default_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                            <table id="zero_config" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th></th>

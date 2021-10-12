@@ -2,12 +2,10 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-7 align-self-center">
-                <!-- <h5 class="page-title text-truncate text-dark font-weight-medium mb-1"><?= $navbar ?></h5> -->
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
                             <li class="breadcrumb-item"><a href="#" class="text-muted"><?= $navbar ?></a></li>
-                            <!-- <li class="breadcrumb-item text-muted active" aria-current="page">Ticket List</li> -->
                         </ol>
                     </nav>
                 </div>
@@ -23,13 +21,19 @@
             <div class="col-12 mb-5 ">
                 <a class="btn btn-dark btn-sm mb-1" href="<?= base_url('riwayat-aktifitas-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>"><i class="fa fa-info"></i> Lihat Riwayat Aktifitas Pengajuan</a>
                 <?php
-                if ($this->fungsi->user_login()->user_status == 'Admin') {
+                if ($disable != 'active') {
                 ?>
-                    <a class="btn btn-primary btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
-                    <a class="btn btn-success btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
+                    <?php
+                    if ($this->fungsi->user_login()->user_status == 'Admin') {
+                    ?>
+                        <a class="btn btn-primary btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-status<?= $data['id_pengajuan'] ?>">Ubah Status Proses Pengajuan</a>
+                        <a class="btn btn-success btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-selesai<?= $data['id_pengajuan'] ?>"><i class="far fa-check-circle"></i> Buat Pengajuan Selesai</a>
+                    <?php  }
+                    ?>
+                    <a class="btn btn-danger btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
                 <?php  }
                 ?>
-                <a class="btn btn-danger btn-sm mb-1" href="#" data-toggle="modal" data-target="#modal-cancel<?= $data['id_pengajuan'] ?>">Batalkan Pengajuan</a>
+
             </div>
             <div class="row">
                 <div class="col-md-3">
@@ -92,7 +96,7 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <span class="badge bg-dark font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
+                                        <span class="badge bg-<?= $color ?> font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block"><?= $data['nama_status'] ?></span>
                                     </div>
                                     <hr>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Status Pengajuan</h6>
@@ -133,16 +137,21 @@
                                 <div class="col-md-8">
                                     <h5 class="card-title">Laboratorium Kalibrasi</h5>
                                 </div>
-                                <div class="col-md-4">
-                                    <?php
-                                    if ($this->fungsi->user_login()->user_status == 'Admin') {
-                                    ?>
-                                        <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-add-lab<?= $data['id_pengajuan'] ?>"><i class="fas fa-plus"></i> Lab</a>
-                                    <?php  } else {
-                                    ?>
-                                        <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>"><i class="fab fa-get-pocket"></i> Pilih Lab</a>
-                                    <?php } ?>
-                                </div>
+                                <?php
+                                if ($disable != 'active') {
+                                ?>
+                                    <div class="col-md-4">
+                                        <?php
+                                        if ($this->fungsi->user_login()->user_status == 'Admin') {
+                                        ?>
+                                            <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-add-lab<?= $data['id_pengajuan'] ?>"><i class="fas fa-plus"></i> Lab</a>
+                                        <?php  } else {
+                                        ?>
+                                            <a class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modal-lab<?= $data['id_pengajuan'] ?>"><i class="fab fa-get-pocket"></i> Pilih Lab</a>
+                                        <?php } ?>
+                                    </div>
+                                <?php
+                                } ?>
                             </div>
                             <hr>
                             <ul class="list-style-none mb-0">

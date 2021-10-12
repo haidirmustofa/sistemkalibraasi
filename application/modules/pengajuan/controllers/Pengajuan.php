@@ -46,6 +46,8 @@ class Pengajuan extends MY_Controller
         $id =  $slug_[0]['id_pengajuan'];
         $data['id_pengajuan'] = $id;
         $this->M_pengajuan->updatepengajuan($data);
+        $data['status_pembatalan'] = $this->M_pengajuan->getStatusPembatalan();
+        $data['status_akhir'] = $this->M_pengajuan->getStatusAkhir();
         $params['pengajuan'] = $this->M_pengajuan->getPengajuanByID($id);
         $params['labo'] = $this->M_pengajuan->getLab();
         $params['alat'] = $this->M_pengajuan->getAlatByPengajuan();
@@ -53,6 +55,18 @@ class Pengajuan extends MY_Controller
         $params['pengajuanlab'] = $this->M_pengajuan->getPengajuanLab($id);
         $params['dokumen'] = $this->M_pengajuan->getDokumenByPengajuan();
         $params['status'] = $this->M_pengajuan->getStatusProses();
+        $data['pembatalan'] = $data['status_pembatalan'][0]['id_status'];
+        $data['akhir'] = $data['status_akhir'][0]['id_status'];
+        if ($data['pembatalan'] == $slug_[0]['status_pengajuan']) {
+            $params['disable'] = 'active';
+            $params['color'] = 'danger';
+        } else if ($data['akhir'] == $slug_[0]['status_pengajuan']) {
+            $params['disable'] = 'active';
+            $params['color'] = 'success';
+        } else {
+            $params['disable'] = '';
+            $params['color'] = 'dark';
+        }
         $params['navbar'] = 'Data Pengajuan';
         $params['title'] = 'Detail pengajuan Sistem Kalibrasi';
         $this->template->load('template/template', 'detail_pengajuan', $params);

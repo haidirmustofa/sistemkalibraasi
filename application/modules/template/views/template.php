@@ -210,6 +210,12 @@
       document.getElementById('delete_link').setAttribute('href', delete_url);
     }
   </script>
+  <script>
+    $('#example').dataTable({
+      "order": []
+    });
+  </script>
+
 </body>
 
 </html>

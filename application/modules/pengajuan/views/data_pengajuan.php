@@ -22,10 +22,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Data pengajuan Sistem Kalibrasi</h4>
                         <div class="table-responsive">
-                            <table id="default_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
+                            <table id="example" class="table table-striped table-bordered display no-wrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th style="width: 5%;"></th>
+                                        <th style="width: 5%;">#</th>
                                         <th><small><b>Alat</small></b></th>
                                         <th><small><b>Nama pengaju</small></b></th>
                                         <th><small><b>Divisi</small></b></th>
@@ -40,7 +40,6 @@
                                     foreach ($pengajuan as $data) {
                                     ?>
                                         <tr>
-                                            <td><?= $no ?></td>
                                             <td>
                                                 <div class="btn-group dropright">
                                                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,3 +111,4 @@
             </div>
         </div>
     </div>
+</div>
