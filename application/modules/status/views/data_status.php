@@ -83,6 +83,7 @@
                                                                     <select class="form-control" id="exampleFormControlSelect1" name="role" required>
                                                                         <option <?php echo ($data['role_status'] == 'Awal') ? 'selected' : ''; ?> value="Awal">Awal</option>
                                                                         <option <?php echo ($data['role_status'] == 'Pembatalan') ? 'selected' : ''; ?> value="Pembatalan">Pembatalan</option>
+                                                                        <option <?php echo ($data['role_status'] == 'Akhir') ? 'selected' : ''; ?> value="Akhir">Akhir</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="modal-footer">

@@ -18,8 +18,7 @@ class M_status extends CI_Model
     }
     public function updaterolestatus($params, $data)
     {
-
-        $this->db->where('role_status', $params['role_awal']);
+        $this->db->where('role_status', $params['role']);
         $this->db->update('tbl_status', $data);
     }
     public function getstatus()
@@ -33,6 +32,14 @@ class M_status extends CI_Model
     {
         $this->db->select('*')
             ->where('role_status', 'Awal')
+            ->from('tbl_status');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getstatusAkhir()
+    {
+        $this->db->select('*')
+            ->where('role_status', 'Akhir')
             ->from('tbl_status');
         $query = $this->db->get()->result_array();
         return $query;

@@ -46,6 +46,7 @@
                                                     </button>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="<?= base_url('detail-pengajuan') ?>/<?= $data['pengajuan_slug'] ?>">Detail Pengajuan</a>
+                                                        <a class=" dropdown-item" href="#" onClick="confirm_modal('delete-pengajuan/<?php echo  $data['id_pengajuan']; ?>');">Hapus</a>
                                                     </div>
                                                 </div>
                                                 <?php if ($this->fungsi->user_login()->user_status == 'Member') { ?>

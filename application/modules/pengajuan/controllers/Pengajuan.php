@@ -199,7 +199,7 @@ class Pengajuan extends MY_Controller
     public function cancel_pengajuan()
     {
         $idpengajuan =  $this->input->post("id");
-        $statuspembatalan = $this->M_pengajuan->getPembatalan($idpengajuan);
+        $statuspembatalan = $this->M_pengajuan->getPembatalanByID($idpengajuan);
         if (!empty($statuspembatalan)) {
             $this->session->set_flashdata('message', ' <div class="alert alert-warning alert-dismissible bg-warning text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Pemberitahuan - </strong> Pengajuan sudah dibatalkan!</div>');
@@ -257,6 +257,10 @@ class Pengajuan extends MY_Controller
     public function delete_pengajuan($params)
     {
         $this->M_pengajuan->deletepengajuan($params);
+        $this->M_pengajuan->deletepengajuanalat($params);
+        $this->M_pengajuan->deletelabpengajuan($params);
+        $this->M_pengajuan->deleteriwayatpengajuan($params);
+        $this->M_pengajuan->deletepembatalan($params);
         $this->session->set_flashdata('message', ' <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menghapus Data!</div>');
         return redirect($_SERVER['HTTP_REFERER']);

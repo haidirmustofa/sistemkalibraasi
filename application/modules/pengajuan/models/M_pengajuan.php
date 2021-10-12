@@ -42,6 +42,26 @@ class M_pengajuan extends CI_Model
         $this->db->where('id_pengajuan_lab', $params);
         $this->db->delete('tbl_pengajuan_lab');
     }
+    public function deletepengajuanalat($params)
+    {
+        $this->db->where('id_pengajuan', $params);
+        $this->db->delete('tbl_pengajuan_alat');
+    }
+    public function deletepembatalan($params)
+    {
+        $this->db->where('id_pengajuan', $params);
+        $this->db->delete('tbl_pembatalan');
+    }
+    public function deletelabpengajuan($params)
+    {
+        $this->db->where('id_pengajuan', $params);
+        $this->db->delete('tbl_pengajuan_lab');
+    }
+    public function deleteriwayatpengajuan($params)
+    {
+        $this->db->where('id_pengajuan', $params);
+        $this->db->delete('tbl_riwayat_pengajuan');
+    }
     public function deletedokumen($id)
     {
         $this->db->where('id_dokumen', $id);
@@ -234,6 +254,14 @@ class M_pengajuan extends CI_Model
     public function getPembatalan()
     {
         $this->db->select('*')
+            ->from('tbl_pembatalan');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getPembatalanByID($id)
+    {
+        $this->db->select('*')
+            ->where('id_pengajuan', $id)
             ->from('tbl_pembatalan');
         $query = $this->db->get()->result_array();
         return $query;
