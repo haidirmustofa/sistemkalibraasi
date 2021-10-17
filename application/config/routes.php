@@ -80,6 +80,7 @@ $route['riwayat-aktifitas-pengajuan/(:any)'] = 'pengajuan/riwayat_aktifitas/$1';
 //alat
 $route['data-alat'] = 'alat/index';
 $route['data-semua-alat'] = 'alat/semua_alat';
+$route['data-alat-terlambat'] = 'alat/daftar_alat_terlambat';
 $route['add-alat'] = 'alat/add_alat';
 $route['delete-alat/(:any)'] = 'alat/delete_alat/$1';
 $route['edit-alat'] = 'alat/edit_alat';

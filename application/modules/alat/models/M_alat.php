@@ -17,6 +17,24 @@ class M_alat extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getAlatTerlambat()
+    {
+        $divisi = $this->fungsi->user_login()->user_divition;
+        if ($this->fungsi->user_login()->user_status != 'Admin') {
+            $this->db->select('*')
+                ->where('status_hari', '+')
+                ->where('hari_kalibrasi >', '0')
+                ->where('id_divisi', $divisi)
+                ->from('tbl_alat');
+        } else {
+            $this->db->select('*')
+                ->where('status_hari', '+')
+                ->where('hari_kalibrasi >', '0')
+                ->from('tbl_alat');
+        }
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getAlatByKondisi($name)
     {
         $divisi = $this->fungsi->user_login()->user_divition;

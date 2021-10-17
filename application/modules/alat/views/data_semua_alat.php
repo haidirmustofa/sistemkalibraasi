@@ -97,20 +97,7 @@
                                     <?php
                                     $no = 1;
                                     foreach ($alat as $data) {
-                                        if ($data['waktu_kalibrasi_alat'] != null) {
-                                            $tanggal = $data['waktu_kalibrasi_alat'];
-                                            $pecah_tgl = explode("-", $tanggal);
-                                            $thn = $pecah_tgl[0];
-                                            $bln = $pecah_tgl[1];
-                                            $tgl = $pecah_tgl[2];
-                                            $nextkalibrasi = $thn + $data['interval_kalibrasi_alat'];
-                                            $newkalibrasi = $nextkalibrasi . '-' . $bln . '-' . $tgl;
-                                            $date1 = date_create($newkalibrasi);
-                                            $date2 = date_create(date("Y-m-d"));
-                                            $diff = date_diff($date1, $date2);
-                                        } else {
-                                            $newkalibrasi = null;
-                                        }
+                                        $nextkalibrasi = $data['status_hari'] . $data['hari_kalibrasi'];
                                     ?>
                                         <tr>
                                             <td>
@@ -129,13 +116,9 @@
                                             <td><small><?= $data['merek_alat'] ?></small></td>
                                             <td><small><?= $data['interval_kalibrasi_alat'] ?> Tahun</small></td>
                                             <td><small><?= $data['waktu_kalibrasi_alat'] ?></small></td>
-                                            <td><small><?= $newkalibrasi ?>
+                                            <td><small><?= $data['kalibrasi_selanjutnya'] ?>
                                                     <br>
-                                                    <?php
-                                                    if ($newkalibrasi != null) {
-                                                        echo $diff->format("%R%a Hari");
-                                                    }
-                                                    ?>
+                                                    <?= $nextkalibrasi ?> Hari <?php echo ($nextkalibrasi > 0) ? ' <p style="color: red;">(Terlambat)</p>' : ''; ?>
                                                 </small></td>
                                             <td><small><?= $data['keterangan_alat'] ?></small></td>
                                             <td><small><?= $data['kondisi_alat'] ?></small></td>

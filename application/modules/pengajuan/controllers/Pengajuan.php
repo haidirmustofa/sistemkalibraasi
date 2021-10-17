@@ -110,15 +110,17 @@ class Pengajuan extends MY_Controller
     }
     public function add_pengajuan()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $status = $this->M_pengajuan->getStatusAwal();
         $params['nama_pengaju'] =  $this->input->post("name");
         $params['id_user'] =  $this->fungsi->user_login()->id_user;
         $params['tanggal_pengajuan'] =  date('Y-m-d');
+        $params['waktu_pengajuan'] =  date('H:i:s');
         $params['deskripsi_pengajuan'] = $this->input->post('description');
         $params['status_pengajuan'] = $status[0]['id_status'];
         $params['divisi_pengaju'] = $this->fungsi->user_login()->user_divition;
         $params['is_available'] = '0';
-        $params['pengajuan_slug'] = random_string('alnum', 50) . time();;
+        $params['pengajuan_slug'] = random_string('alnum', 50) . time();
         $this->M_pengajuan->inputpengajuan($params);
         $this->session->set_flashdata('message', ' <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show"role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Sukses - </strong> Berhasil Menambahkan Data!</div>');

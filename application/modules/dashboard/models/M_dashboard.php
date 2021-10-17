@@ -15,11 +15,39 @@ class M_dashboard extends CI_Model
         $query = $this->db->get()->result_array();
         return $query;
     }
+    public function getNewPengajuan()
+    {
+        $this->db->select('*')
+            ->from('tbl_pengajuan')
+            ->join('tbl_divisi', 'tbl_divisi.id_divisi = tbl_pengajuan.divisi_pengaju')
+            ->where('is_new_admin', 1);
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
     public function getPengajuanByDivisi()
     {
         $id = $this->fungsi->user_login()->user_divition;
         $this->db->select('*, COUNT(id_pengajuan) as total')
             ->where('divisi_pengaju', $id)
+            ->from('tbl_pengajuan');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getUpdatePengajuan($divisi)
+    {
+        $this->db->select('*')
+            ->where('divisi_pengaju', $divisi)
+            ->join('tbl_divisi', 'tbl_divisi.id_divisi = tbl_pengajuan.divisi_pengaju')
+            ->where('is_member', 1)
+            ->from('tbl_pengajuan');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getUpdatePengajuanAdmin()
+    {
+        $this->db->select('*')
+            ->where('is_admin', 1)
+            ->join('tbl_divisi', 'tbl_divisi.id_divisi = tbl_pengajuan.divisi_pengaju')
             ->from('tbl_pengajuan');
         $query = $this->db->get()->result_array();
         return $query;
@@ -73,6 +101,101 @@ class M_dashboard extends CI_Model
     public function getAlat()
     {
         $this->db->select('*, COUNT(id_alat) as total')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder30()
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '30')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder15()
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '15')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder5()
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '5')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder0()
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '0')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatTerlambat()
+    {
+        $this->db->select('*')
+            ->where('status_hari', '+')
+            ->where('hari_kalibrasi >', '0')
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder30ByDivisi($divisi)
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '30')
+            ->where('id_divisi', $divisi)
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder15ByDivisi($divisi)
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '15')
+            ->where('id_divisi', $divisi)
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder5ByDivisi($divisi)
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '5')
+            ->where('id_divisi', $divisi)
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatUnder0ByDivisi($divisi)
+    {
+        $this->db->select('*')
+            ->where('status_hari', '-')
+            ->where('hari_kalibrasi', '0')
+            ->where('id_divisi', $divisi)
+            ->from('tbl_alat');
+        $query = $this->db->get()->result_array();
+        return $query;
+    }
+    public function getAlatTerlambatByDivisi($divisi)
+    {
+        $this->db->select('*')
+            ->where('status_hari', '+')
+            ->where('id_divisi', $divisi)
+            ->where('hari_kalibrasi >', '0')
             ->from('tbl_alat');
         $query = $this->db->get()->result_array();
         return $query;

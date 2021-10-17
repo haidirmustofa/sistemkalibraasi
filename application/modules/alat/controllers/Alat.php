@@ -56,6 +56,14 @@ class Alat extends MY_Controller
         $params['title'] = 'Data Alat Sistem Kalibrasi';
         $this->template->load('template/template', 'data_alat', $params);
     }
+    public function daftar_alat_terlambat()
+    {
+
+        $params['alat'] = $this->M_alat->getAlatTerlambat();
+        $params['navbar'] = 'Data Alat';
+        $params['title'] = 'Data Alat Sistem Kalibrasi';
+        $this->template->load('template/template', 'data_alat', $params);
+    }
     public function daftar_kondisi_alat($name)
     {
         $newname = str_replace('-', ' ', $name);
@@ -83,6 +91,16 @@ class Alat extends MY_Controller
     }
     public function edit_alat()
     {
+        $tanggal = $this->input->post('kalibrasi_terakhir');
+        $pecah_tgl = explode("-", $tanggal);
+        $thn = $pecah_tgl[0];
+        $bln = $pecah_tgl[1];
+        $tgl = $pecah_tgl[2];
+        $nextkalibrasi = $thn + $this->input->post('interval');
+        $newkalibrasi = $nextkalibrasi . '-' . $bln . '-' . $tgl;
+        $date1 = date_create($newkalibrasi);
+        $date2 = date_create(date("Y-m-d"));
+        $diff = date_diff($date1, $date2);
         $params['id_alat'] = $this->input->post('id');
         $params['nama_alat'] = $this->input->post('name');
         $params['no_seri_alat'] = $this->input->post('no_seri');
@@ -90,6 +108,11 @@ class Alat extends MY_Controller
         $params['merek_alat'] = $this->input->post('merek');
         $params['interval_kalibrasi_alat'] = $this->input->post('interval');
         $params['waktu_kalibrasi_alat'] = $this->input->post('kalibrasi_terakhir');
+        $params['kalibrasi_selanjutnya'] = $newkalibrasi;
+        $data['hari_kalibrasi'] = $diff->format("%R%a");
+        $params['hari_kalibrasi'] = $diff->format("%a");
+        $status = substr($data['hari_kalibrasi'], 0, 1);
+        $params['status_hari'] = $status;
         $params['keterangan_alat'] = $this->input->post('keterangan');
         $params['kondisi_alat'] = $this->input->post('kondisi');
         $params['divisi'] = $this->input->post('divisi');

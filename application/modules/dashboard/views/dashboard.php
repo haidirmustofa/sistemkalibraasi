@@ -14,6 +14,11 @@ foreach ($graphpengajuan as $datagraphpengajuan) {
         'label' => $datagraphpengajuan['status_pengajuan'], 'y' => $datagraphpengajuan['total']
     ];
 }
+// foreach ($alat as $alatunder30) {
+//     $alatunder30[] = [
+//         'label' => $datagraphpengajuan['status_pengajuan'], 'y' => $datagraphpengajuan['total']
+//     ];
+// }
 ?>
 <script>
     window.onload = function() {
@@ -61,6 +66,99 @@ foreach ($graphpengajuan as $datagraphpengajuan) {
                             <li class="breadcrumb-item"><a href="#" class="text-muted"><?= $navbar ?></a></li>
                         </ol>
                     </nav>
+                </div>
+            </div>
+            <div class="col-5 align-self-center">
+                <a class="nav-link dropdown-toggle pl-md-3 position-relative float-right" href="javascript:void(0)" id="bell" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span><i data-feather="bell" class="svg-icon"></i></span>
+                    <span class="badge badge-danger notify-no rounded-circle"><?= $totalnotif ?></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+                    <ul class="list-style-none">
+                        <li>
+                            <div class="message-center notifications position-relative">
+                                <?php
+                                foreach ($updatepengajuan as $updatedatapengajuan) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-pengajuan') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-primary rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>Informasi Pengajuan</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Perubahan data pengajuan <br><?= $updatedatapengajuan['nama_divisi'] ?><br> Pengaju : <?= $updatedatapengajuan['nama_pengaju'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                                <?php
+                                foreach ($newpengajuan as $datanewpengajuan) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-pengajuan') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-primary rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>Pengajuan Baru</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Pengajuan baru dari <?= $datanewpengajuan['nama_pengaju'] ?> - <?= $datanewpengajuan['nama_divisi'] ?></span>
+                                            <span class="font-12 text-nowrap d-block text-muted"><?= $datanewpengajuan['tanggal_pengajuan'] ?> - <?= $datanewpengajuan['waktu_pengajuan'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                                <?php
+                                foreach ($alatunder30 as $data30) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-semua-alat') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-warning rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>Pemberitahuan - alat harus segera di kalibrasi 30 hari lagi</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Nama Alat <?= $data30['nama_alat'] ?> - Pemilik : <?= $data30['divisi'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                                <?php
+                                foreach ($alatunder15 as $data15) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-semua-alat') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-warning rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>Pemberitahuan - alat harus segera di kalibrasi 15 hari lagi</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Nama Alat <?= $data15['nama_alat'] ?> - Pemilik : <?= $data15['divisi'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                                <?php
+                                foreach ($alatunder5 as $data5) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-semua-alat') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-warning rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>Pemberitahuan - alat harus segera di kalibrasi 5 hari lagi</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Nama Alat <?= $data5['nama_alat'] ?> - Pemilik : <?= $data5['divisi'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                                <?php
+                                foreach ($terlambat as $dataterlambat) {
+                                ?>
+                                    <!-- Message -->
+                                    <a href="<?= base_url('data-alat-terlambat') ?>" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                        <div class="btn btn-danger rounded-circle btn-circle"><i data-feather="airplay" class="text-white"></i></div>
+                                        <div class=" d-inline-block v-middle pl-2" style="width: 100%;">
+                                            <h6 class="message-title mb-0 mt-1"><b>TERLAMBAT - Alat terlambat dikalibrasi</b></h6>
+                                            <span class="font-12 text-nowrap d-block text-muted">Nama Alat <?= $dataterlambat['nama_alat'] ?> - Pemilik : <?= $dataterlambat['divisi'] ?></span>
+                                        </div>
+                                    </a>
+                                <?php
+                                } ?>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -118,7 +216,7 @@ foreach ($graphpengajuan as $datagraphpengajuan) {
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-12">
-                <div class="card" style="height: max-content;">
+                <div class="card" style="height: 500px;">
                     <div class="card-body">
                         <h6 class="card-title">Jumlah Alat Berdasarkan Divisi / Unit Kerja</h6>
                         <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
@@ -126,7 +224,7 @@ foreach ($graphpengajuan as $datagraphpengajuan) {
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
-                <div class="card" style="height: max-content;">
+                <div class="card" style="height: 500px">
                     <div class="card-body">
                         <h6 class="card-title">Jumlah Alat Berdasarkan Kondisi</h6>
                         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
@@ -134,8 +232,6 @@ foreach ($graphpengajuan as $datagraphpengajuan) {
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 <script src="<?= base_url() ?>assets/canvasjs-master/dist/canvasjs.min.js"></script>
